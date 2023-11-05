@@ -1,4 +1,5 @@
 import Banner from "../Components/Banner/Banner";
+import SliderMotiv from "../Components/MotivationSlider/SliderMotiv";
 
 
 const HomeOutlet = () => {
@@ -6,6 +7,7 @@ const HomeOutlet = () => {
         <div className="pt-20 ">
             <div className="">
                 <Banner></Banner>
+                <SliderMotiv></SliderMotiv>
             </div>
         </div>
     );

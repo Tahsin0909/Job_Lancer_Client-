@@ -18,13 +18,13 @@ const Banner = () => {
                             <button className="p-4 rounded-sm shadow-lg bg-green-700  text-white mt-4">Get Started</button>
                         </p>
                         <div className="flex gap-4 mt-4">
-                            <div className="border border-gray-400 text-gray-400 p-2">
+                            <div className="border border-gray-400 text-gray-400 p-2 hover:border-green-800 hover:text-green-800">
                                 <p>Web Development</p>
                             </div>
-                            <div className="border border-gray-400 text-gray-400 p-2">
+                            <div className="border border-gray-400 text-gray-400 p-2 hover:border-green-800 hover:text-green-800">
                                 <p>Digital Marketing</p>
                             </div>
-                            <div className="border border-gray-400 text-gray-400 p-2">
+                            <div className="border border-gray-400 text-gray-400 p-2 hover:border-green-800 hover:text-green-800">
                                 <p>Graphic Design</p>
                             </div>
                         </div>
