@@ -4,7 +4,7 @@ import { IoLogInOutline , IoCreateOutline } from "react-icons/io5";
 
 const Navbar = () => {
     return (
-        <div className="flex justify-between items-center lg:px-32 md:px-10 px-4 border-b py-3">
+        <div className="flex justify-between items-center lg:px-32 md:px-10 px-4 border-b py-3 fixed w-full bg-white">
             <div className="flex items-center">
                 <div className="flex items-center">
                     <div className="drawer">
