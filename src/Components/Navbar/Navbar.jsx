@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import NavBarLink from "./NavBarLink";
-
+import { IoLogInOutline , IoCreateOutline } from "react-icons/io5";
 
 const Navbar = () => {
     return (
-        <div className="flex justify-between items-center lg:px-32 border-b py-3">
+        <div className="flex justify-between items-center lg:px-32 md:px-10 px-4 border-b py-3">
             <div className="flex items-center">
                 <div className="flex items-center">
                     <div className="drawer">
@@ -16,8 +16,8 @@ const Navbar = () => {
                             </label>
                         </div>
                         <div className="drawer-side">
-                            <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay lg:hidden"></label>
-                            <ul className="menu p-4 w-32 md:w-40 lg:w-80 min-h-full bg-base-200 text-base-content lg:hidden">
+                            <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay  lg:hidden"></label>
+                            <ul className="menu p-4 w-52  lg:w-80 min-h-full bg-white text-base-content lg:hidden">
                                 {/* Sidebar content here */}
                                 {
                                     <NavBarLink />
@@ -26,24 +26,27 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div>
-                        <h1><span>JOB</span><span>LANCER</span></h1>
+                        <h1
+                            className="text-2xl font-bold bg-gradient-to-r from-green-400 via-blue-300 to-purple-400 bg-clip-text text-transparent"><span>job</span><span className="font-[BlackOpsOne]">lancer</span></h1>
                     </div>
                 </div>
                 <div className="hidden lg:flex mx-10">
                     <ul className="menu menu-horizontal px-1">
-                            {
-                                <NavBarLink></NavBarLink>
-                            }
+                        {
+                            <NavBarLink></NavBarLink>
+                        }
                     </ul>
                 </div>
             </div>
             <div className="flex items-center gap-4">
                 <Link className="border px-2 py-[7px] text-white bg-green-700 rounded-lg">Post a Job</Link>
-                <div>
-                    <Link>Sign In</Link>
+                <div className="hidden md:flex items-center hover:text-green-400">
+                    <IoCreateOutline size={'20px'}/>
+                    <Link to={'/signIn'}>Sign In</Link>
                 </div>
-                <div>
-                    <Link>Log In</Link>
+                <div className="hidden md:flex items-center hover:text-green-400">
+                    <IoLogInOutline size={'20px'}/>
+                    <Link to={'/logIn'}>Log In</Link>
                 </div>
             </div>
         </div>

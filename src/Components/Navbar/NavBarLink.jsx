@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 const NavBarLink = () => {
     return (
-        <div className="lg:flex ">
+        <div className="lg:flex md:text-base text-sm">
             <li>
                 <NavLink
                     to={`/`}
@@ -13,7 +13,7 @@ const NavBarLink = () => {
             </li>
             <li>
                 <NavLink
-                    to={`/about`}
+                    to={`/freelancers`}
                     className={({ isActive, isPending }) =>
                         isActive ? "text-green-700 underline font-semibold" : isPending ? "pending" : ""}>
                     Find FreeLancers
@@ -21,12 +21,30 @@ const NavBarLink = () => {
             </li>
             <li>
                 <NavLink
-                    to={`/service`}
+                    to={`/jobs`}
                     className={({ isActive, isPending }) =>
                         isActive ? "text-green-700 underline font-semibold" : isPending ? "pending" : ""}>
                     Find Jobs
                 </NavLink>
             </li>
+            <div className='md:hidden sm:flex flex-col'>
+                <li>
+                    <NavLink
+                        to={`/signIn`}
+                        className={({ isActive, isPending }) =>
+                            isActive ? "text-green-700 underline font-semibold" : isPending ? "pending" : ""}>
+                        Sign In
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to={`/logIn`}
+                        className={({ isActive, isPending }) =>
+                            isActive ? "text-green-700 underline font-semibold" : isPending ? "pending" : ""}>
+                        Log In
+                    </NavLink>
+                </li>
+            </div>
         </div>
     );
 };
