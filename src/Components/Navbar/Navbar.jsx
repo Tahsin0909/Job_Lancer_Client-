@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import NavBarLink from "./NavBarLink";
-import { IoLogInOutline , IoCreateOutline } from "react-icons/io5";
+import { IoLogInOutline, IoCreateOutline } from "react-icons/io5";
 
 const Navbar = () => {
     return (
-        <div className="flex justify-between items-center lg:px-32 md:px-10 px-4 border-b py-3 fixed w-full bg-white">
+        <div className="flex justify-between items-center lg:px-32 md:px-10 px-4 border-b py-3 fixed w-full bg-white z-50">
             <div className="flex items-center">
                 <div className="flex items-center">
                     <div className="drawer">
@@ -25,9 +25,11 @@ const Navbar = () => {
                             </ul>
                         </div>
                     </div>
-                    <div>
+                    <div className="flex">
                         <h1
-                            className="text-2xl font-bold bg-gradient-to-r from-green-400 via-blue-300 to-purple-400 bg-clip-text text-transparent"><span>job</span><span className="font-[BlackOpsOne]">lancer</span></h1>
+                            className="text-2xl font-bold bg-gradient-to-r from-green-400 via-blue-300 to-purple-400 bg-clip-text text-transparent"><span>job</span><span className="font-[BlackOpsOne]">lancer</span>
+                        </h1>
+                        <img className="w-4 h-4 relative -top-1 right-1" src="https://cdn-icons-png.flaticon.com/128/1432/1432368.png" alt="" />
                     </div>
                 </div>
                 <div className="hidden lg:flex mx-10">
@@ -41,11 +43,11 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
                 <Link className="border px-2 py-[7px] text-white bg-green-700 rounded-lg">Post a Job</Link>
                 <div className="hidden md:flex items-center hover:text-green-400">
-                    <IoCreateOutline size={'20px'}/>
+                    <IoCreateOutline size={'20px'} />
                     <Link to={'/signIn'}>Sign In</Link>
                 </div>
                 <div className="hidden md:flex items-center hover:text-green-400">
-                    <IoLogInOutline size={'20px'}/>
+                    <IoLogInOutline size={'20px'} />
                     <Link to={'/logIn'}>Log In</Link>
                 </div>
             </div>
