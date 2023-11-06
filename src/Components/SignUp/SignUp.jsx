@@ -1,6 +1,21 @@
 import { AiOutlineCheck } from "react-icons/ai";
 
 const SignUp = () => {
+    const handleSignUp = (e) =>{
+        e.preventDefault()
+        const form = e.target
+        const name = form.name.value
+        const email = form.email.value
+        const password = form.password.value
+        const city = form.city.value
+        const zip = form.zip.value
+        const skill = form.skill.value
+        const picture_Url = form.picture.value
+        const User = {
+            name, email, password, city, zip, skill, picture_Url
+        }
+        console.log(User);
+    }
     return (
         <div>
             <div className="pt-24 pb-10">
@@ -8,7 +23,7 @@ const SignUp = () => {
                     <div className="flex justify-center">
                         <div >
                             <p className="text-xl text-green-900">Register Now :</p>
-                            <form>
+                            <form onSubmit={(e) => handleSignUp(e)}>
                                 <div className=" w-full ">
                                     <label className="label">
                                         <span className="label-text text-green-900">Name?</span>
@@ -47,7 +62,7 @@ const SignUp = () => {
                                     <label className="label">
                                         <span className="label-text text-green-900">Skill?</span>
                                     </label>
-                                    <select className="select select-success w-full max-w-md">
+                                    <select name="skill" className="select select-success w-full max-w-md">
                                         <option disabled selected>Select Your Skill</option>
                                         <option>Web Development</option>
                                         <option>Digital MArketing</option>
