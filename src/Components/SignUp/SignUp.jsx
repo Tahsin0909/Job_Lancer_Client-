@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 
 const SignUp = () => {
-    const handleSignUp = (e) =>{
+    //Error MAssage State for password
+    const [passwordError, setPasswordError] = useState('')
+    const handleSignUp = (e) => {
         e.preventDefault()
         const form = e.target
         const name = form.name.value
@@ -14,7 +17,31 @@ const SignUp = () => {
         const User = {
             name, email, password, city, zip, skill, picture_Url
         }
-        console.log(User);
+
+        const UpperRegX = /(?=.*[A-Z])/;
+
+        // regx to check special charecter
+        const SpecialRegX = /(?=.*[@$!%*?&])/
+
+        if (password.length >= 6) {
+
+            // to check UpperCAse
+            if (UpperRegX.test(password)) {
+
+                // to check special charecter
+                if (SpecialRegX.test(password)) {
+                    console.log(User);
+                    setPasswordError('')
+                }
+                else {
+                    setPasswordError('*Password must contain at least one special character.')
+                }
+            }
+            else {
+                setPasswordError('*Password must contain at least one uppercase letter')
+            }
+        }
+        else { setPasswordError('*Password must be at least 6 characters long.') }
     }
     return (
         <div>
@@ -30,7 +57,7 @@ const SignUp = () => {
                                     </label>
                                     <input name="name" type="text" placeholder="Username" className="input input-bordered input-success  w-full max-w-md" />
                                 </div>
-                                <div className="lg:flex gap-2">
+                                <div className="lg:flex gap-2 pb-2">
                                     <div className=" w-full ">
                                         <label className="label">
                                             <span className="label-text text-green-900">Email?</span>
@@ -44,6 +71,7 @@ const SignUp = () => {
                                         <input name="password" required type="password" placeholder="1234A@" className="input input-bordered input-success  lg:max-w-[218px] max-w-md w-full" />
                                     </div>
                                 </div>
+                                <p className="text-xs text-red-600 ">{passwordError}</p>
                                 <div className="flex items-center gap-3">
                                     <div className="">
                                         <label className="label">
