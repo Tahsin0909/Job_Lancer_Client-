@@ -32,6 +32,7 @@ const SignUp = () => {
                 if (SpecialRegX.test(password)) {
                     console.log(User);
                     setPasswordError('')
+                    form.reset()
                 }
                 else {
                     setPasswordError('*Password must contain at least one special character.')
