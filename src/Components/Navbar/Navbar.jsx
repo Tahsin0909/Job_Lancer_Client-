@@ -44,7 +44,7 @@ const Navbar = () => {
                 <Link className="border px-2 py-[7px] text-white bg-green-700 rounded-lg">Post a Job</Link>
                 <div className="hidden md:flex items-center hover:text-green-400">
                     <IoCreateOutline size={'20px'} />
-                    <Link to={'/signIn'}>Sign In</Link>
+                    <Link to={'/signUp'}>Sign Up</Link>
                 </div>
                 <div className="hidden md:flex items-center hover:text-green-400">
                     <IoLogInOutline size={'20px'} />

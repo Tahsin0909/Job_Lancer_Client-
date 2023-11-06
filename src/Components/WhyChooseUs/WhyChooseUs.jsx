@@ -56,8 +56,7 @@ const WhyChooseUs = () => {
             <div className='hidden lg:flex justify-center'>
                 <img
                 style={{
-                    transform: 'translateY(-534px)'
-
+                    transform: 'translateY(-533px)'
                 }}
                 className='w-[800px] absolute' src="https://i.ibb.co/JHrR59t/image-removebg-preview-15.png" alt="" />
             </div>
