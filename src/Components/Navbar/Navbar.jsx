@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import NavBarLink from "./NavBarLink";
 import { IoLogInOutline, IoCreateOutline } from "react-icons/io5";
+import { useContext } from "react";
+import { AuthContext } from "../ContextApi/ContextApi";
+import { GoBell } from 'react-icons/go';
+import { CgProfile } from 'react-icons/cg';
+
 
 const Navbar = () => {
+    const { AuthUser } = useContext(AuthContext)
+    console.log(AuthUser);
     return (
         <div className="flex justify-between items-center lg:px-32 md:px-10 px-4 border-b py-3 fixed w-full bg-white z-50">
             <div className="flex items-center">
@@ -42,14 +49,30 @@ const Navbar = () => {
             </div>
             <div className="flex items-center gap-4">
                 <Link className="border px-2 py-[7px] text-white bg-green-700 rounded-lg">Post a Job</Link>
-                <div className="hidden md:flex items-center hover:text-green-400">
-                    <IoCreateOutline size={'20px'} />
-                    <Link to={'/signUp'}>Sign Up</Link>
-                </div>
-                <div className="hidden md:flex items-center hover:text-green-400">
-                    <IoLogInOutline size={'20px'} />
-                    <Link to={'/logIn'}>Log In</Link>
-                </div>
+                {
+                    AuthUser?.email ?
+                        <div className="lg:flex items-center gap-4  hidden">
+                            <div className="hidden md:flex items-center hover:text-green-400">
+                                <GoBell size={'20px'} />
+                            </div>
+                            <div className="hidden md:flex items-center hover:text-green-400">
+                                {
+                                  AuthUser?.photoURL ? <img className="w-12 rounded-full" src={AuthUser?.photoURL} alt="" /> : <Link to={'/dashBoard'}> <CgProfile size={'40px'} /></Link>
+                                }
+                            </div>
+                        </div>
+                        :
+                        <div className="lg:flex items-center gap-4  hidden">
+                            <div className="hidden md:flex items-center hover:text-green-400">
+                                <IoCreateOutline size={'20px'} />
+                                <Link to={'/signUp'}>Sign Up</Link>
+                            </div>
+                            <div className="hidden md:flex items-center hover:text-green-400">
+                                <IoLogInOutline size={'20px'} />
+                                <Link to={'/logIn'}>Log In</Link>
+                            </div>
+                        </div>
+                }
             </div>
         </div>
     )
