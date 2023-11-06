@@ -35,7 +35,7 @@ const ContextApi = ({ children }) => {
         const Unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setAuthUser(user)
-                // console.log(user)
+                console.log(user)
             } else {
                 // console.log(user)
             }
@@ -54,7 +54,9 @@ const ContextApi = ({ children }) => {
 
     const Data = {
         AuthUser,
-        PasswordSignUp
+        PasswordSignUp,
+        PasswordSignIn,
+        GoogleSignUp
     }
     return (
         <AuthContext.Provider value={Data}>

@@ -3,7 +3,7 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { AuthContext } from "../ContextApi/ContextApi";
 
 const SignUp = () => {
-    const { PasswordSignUp } = useContext(AuthContext)
+    const { PasswordSignUp, GoogleSignUp } = useContext(AuthContext)
     //Error MAssage State for password
     const [passwordError, setPasswordError] = useState('')
     const handleSignUp = (e) => {
@@ -53,6 +53,14 @@ const SignUp = () => {
             }
         }
         else { setPasswordError('*Password must be at least 6 characters long.') }
+    }
+    const handleGoogle = () => {
+        GoogleSignUp()
+            .then(result => console.log(result.user))
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
     }
     return (
         <div>
@@ -120,7 +128,7 @@ const SignUp = () => {
 
                             <div className=" max-w-md w-full mt-2 rounded-xl border  bg-white ">
                                 <div className=" flex gap-8 md:gap-16 items-center justify-center py-4 ">
-                                    <img className="w-10 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110  duration-200" src="https://cdn-icons-png.flaticon.com/128/281/281764.png" alt="Google Sign Up" />
+                                    <img onClick={handleGoogle} className="w-10 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110  duration-200" src="https://cdn-icons-png.flaticon.com/128/281/281764.png" alt="Google Sign Up" />
                                     <img className="w-10 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110  duration-200" src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" alt="Facebook Sign Up" />
                                     <img className="w-10 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110  duration-200" src="https://cdn-icons-png.flaticon.com/128/3955/3955024.png" alt="Instagram Sign up" />
                                 </div>
