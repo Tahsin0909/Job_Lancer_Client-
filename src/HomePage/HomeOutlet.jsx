@@ -4,6 +4,7 @@ import ForClients from "../Components/ForClients/ForClients";
 import ForFreelancer from "../Components/ForFreelancer/ForFreelancer";
 import Motivation from "../Components/MotivationSlider/Motivation";
 import SliderMotiv from "../Components/MotivationSlider/SliderMotiv";
+import WhyChooseUs from "../Components/WhyChooseUs/WhyChooseUs";
 
 
 const HomeOutlet = () => {
@@ -16,6 +17,7 @@ const HomeOutlet = () => {
                 <Motivation></Motivation>
                 <ForFreelancer></ForFreelancer>
                 <AboutUs></AboutUs>
+                <WhyChooseUs></WhyChooseUs>
             </div>
         </div>
     );

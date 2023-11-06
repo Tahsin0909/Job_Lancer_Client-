@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 const Footer = () => {
     return (
-        <div>
+        <div className="">
             <footer className="footer py-10 bg-base-200 text-base-content lg:px-32 md:px-10 px-4">
                 <aside>
                     <div className="flex">
