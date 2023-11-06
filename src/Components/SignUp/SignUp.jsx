@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
+import { AuthContext } from "../ContextApi/ContextApi";
 
 const SignUp = () => {
+    const { PasswordSignUp } = useContext(AuthContext)
     //Error MAssage State for password
     const [passwordError, setPasswordError] = useState('')
     const handleSignUp = (e) => {
@@ -14,7 +16,7 @@ const SignUp = () => {
         const zip = form.zip.value
         const skill = form.skill.value
         const picture_Url = form.picture.value
-        const User = {
+        const SiteUser = {
             name, email, password, city, zip, skill, picture_Url
         }
 
@@ -30,8 +32,16 @@ const SignUp = () => {
 
                 // to check special charecter
                 if (SpecialRegX.test(password)) {
-                    console.log(User);
+                    console.log(SiteUser);
                     setPasswordError('')
+                    //Authentication
+                    PasswordSignUp(email, password)
+                        .then(result => console.log(result.user))
+                        .catch((error) => {
+                            const errorMessage = error.message;
+                            console.log(errorMessage);
+                        });
+
                     form.reset()
                 }
                 else {
