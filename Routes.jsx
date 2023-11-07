@@ -6,6 +6,7 @@ import HomeOutlet from "./src/HomePage/HomeOutlet";
 import SignUp from "./src/Components/SignUp/SignUp";
 import LogIn from "./src/Components/LogIn/LogIn";
 import DashBoard from "./src/Components/DashBoard/DashBoard";
+import PostJob from "./src/Components/PostJob/PostJob";
 
 
 const Routes = createBrowserRouter([
@@ -28,6 +29,10 @@ const Routes = createBrowserRouter([
             {
                 path: "/dashBoard",
                 element:<DashBoard></DashBoard>
+            },
+            {
+                path: "/postJob",
+                element:<PostJob></PostJob>
             },
         ],
     },

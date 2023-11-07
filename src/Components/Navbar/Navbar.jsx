@@ -47,7 +47,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="flex items-center gap-4">
-                <Link className="border px-2 py-[7px] text-white bg-green-700 rounded-lg">Post a Job</Link>
+                <Link to={'/postJob'} className="border px-2 py-[7px] text-white bg-green-700 rounded-lg">Post a Job</Link>
                 {
                     User?.userEmail ?
                         <div className="lg:flex items-center gap-4  hidden">

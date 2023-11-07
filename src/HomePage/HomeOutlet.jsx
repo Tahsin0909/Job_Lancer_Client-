@@ -12,7 +12,7 @@ const HomeOutlet = () => {
         <div className="pt-20 ">
             <div className="">
                 <Banner></Banner>
-                <SliderMotiv></SliderMotiv>
+                {/* <SliderMotiv></SliderMotiv> */}
                 <ForClients></ForClients>
                 <Motivation></Motivation>
                 <ForFreelancer></ForFreelancer>
