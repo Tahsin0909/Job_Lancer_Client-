@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { AuthContext } from "../ContextApi/ContextApi";
 
+
 const SignUp = () => {
     const { PasswordSignUp, GoogleSignUp } = useContext(AuthContext)
     //Error MAssage State for password
@@ -16,9 +17,6 @@ const SignUp = () => {
         const zip = form.zip.value
         const skill = form.skill.value
         const picture_Url = form.picture.value
-        const SiteUser = {
-            name, email, password, city, zip, skill, picture_Url
-        }
 
         const UpperRegX = /(?=.*[A-Z])/;
 
@@ -32,11 +30,35 @@ const SignUp = () => {
 
                 // to check special charecter
                 if (SpecialRegX.test(password)) {
-                    console.log(SiteUser);
+                    // console.log(SiteUser);
                     setPasswordError('')
                     //Authentication
                     PasswordSignUp(email, password)
-                        .then(result => console.log(result.user))
+                        .then(result => {
+                            console.log(result.user)
+                            const SignedUser = {
+                                userName: name,
+                                userEmail: result.user.email,
+                                userPassword: password,
+                                userFirebaseUid: result.user.uid,
+                                userCreationTime: result.user.metadata.creationTime,
+                                userLastSignInTime: result.user.metadata.lastSignInTime,
+                                userCity: city,
+                                userZip: zip,
+                                userSkill: skill,
+                                userPhoto: picture_Url,
+                            }
+                            console.log(SignedUser);
+                            fetch('http://localhost:5000/user', {
+                                method: `POST`,
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                body: JSON.stringify(SignedUser)
+                            })
+                                .then(res => res.json())
+                                .then(data => console.log(data))
+                        })
                         .catch((error) => {
                             const errorMessage = error.message;
                             console.log(errorMessage);
@@ -56,7 +78,30 @@ const SignUp = () => {
     }
     const handleGoogle = () => {
         GoogleSignUp()
-            .then(result => console.log(result.user))
+            .then(result => {
+                console.log(result.user)
+                const SignedUser = {
+                    userName: "none",
+                    userEmail: result.user.email,
+                    userFirebaseUid: result.user.uid,
+                    userCreationTime: result.user.metadata.creationTime,
+                    userLastSignInTime: result.user.metadata.lastSignInTime,
+                    userCity: "none",
+                    userZip: "none",
+                    userSkill: "none",
+                    userPhoto: "none",
+                }
+                console.log(SignedUser);
+                fetch('http://localhost:5000/user', {
+                    method: `POST`,
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(SignedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => console.log(data))
+            })
             .catch((error) => {
                 const errorMessage = error.message;
                 console.log(errorMessage);
@@ -112,7 +157,7 @@ const SignUp = () => {
                                     <select name="skill" className="select select-success w-full max-w-md">
                                         <option disabled selected>Select Your Skill</option>
                                         <option>Web Development</option>
-                                        <option>Digital MArketing</option>
+                                        <option>Digital Marketing</option>
                                         <option>Graphic Design</option>
                                     </select>
                                 </div>
@@ -120,7 +165,7 @@ const SignUp = () => {
                                     <label className="label">
                                         <span className="label-text text-green-900">picture Url?</span>
                                     </label>
-                                    <input name="picture" type="text" placeholder="1234" className="input input-bordered input-success  w-full max-w-md" />
+                                    <input name="picture" type="text" defaultValue={'https://cdn-icons-png.flaticon.com/128/219/219956.png'} className="input input-bordered input-success  w-full max-w-md" />
                                 </div>
                                 <input type="submit" value='Submit' className="btn glass mt-4 w-full max-w-md bg-green-900 text-white hover:text-green-900" />
                             </form>
