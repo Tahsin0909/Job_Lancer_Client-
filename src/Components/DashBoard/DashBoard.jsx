@@ -1,12 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../ContextApi/ContextApi";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { VscVerifiedFilled } from "react-icons/vsc";
 import 'react-tabs/style/react-tabs.css';
+import WatchList from "./WatchList/WatchList";
 
 const DashBoard = () => {
     const { User } = useContext(AuthContext)
-
+    const [loading, setLoading] = useState(true)
+    const [WatchListData, setWatchListData] = useState([])
+    useEffect(() => {
+        fetch(`http://localhost:5000/watchList/${User.userFirebaseUid}`)
+            .then(res => res.json())
+            .then(data => {
+                setWatchListData(data)
+                setLoading(false)
+            })
+    }, [])
+    console.log(WatchListData);
     return (
         <div className="lg:px-32 md:px-10 px-4 pt-24">
             {/* profile */}
@@ -15,10 +26,10 @@ const DashBoard = () => {
                     <img className="w-24 rounded-full" src={User.userPhoto} alt="" />
                     <div>
                         <div className="flex gap-1 items-center">
-                            <p className="text-green-600">Name: {User.userName}</p> 
+                            <p className="text-green-600">Name: {User.userName}</p>
                             {
                                 User?.UserVerified == true ? <VscVerifiedFilled fill="blue" /> : ' '
-                            } 
+                            }
                         </div>
                         <p className="text-green-600">Email: <span className="hover:underline">{User.userEmail}</span></p>
                         <div className="flex items-center gap-4 mt-1">
@@ -41,7 +52,7 @@ const DashBoard = () => {
                         <Tab>My Bids</Tab>
                         <Tab>My GiG</Tab>
                         <Tab>Fav Freelancer</Tab>
-                        <Tab>Watchlist</Tab>
+                        <Tab>WatchList</Tab>
                     </TabList>
 
                     <TabPanel>
@@ -60,7 +71,7 @@ const DashBoard = () => {
                         <h2>Any content 5</h2>
                     </TabPanel>
                     <TabPanel>
-                        <h2>Any content 6</h2>
+                        <WatchList />
                     </TabPanel>
                 </Tabs>
             </div>
