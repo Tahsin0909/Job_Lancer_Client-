@@ -29,7 +29,22 @@ const LogIn = () => {
                     console.log(User);
                     setPasswordError('')
                     PasswordSignIn(email, password)
-                        .then(result => console.log(result.user))
+                        .then(result => {
+                            console.log(result.user)
+
+                            const loggedUser = {
+                                userLastSignInTime: result.user.metadata.lastSignInTime,
+                            }
+                            fetch(`http://localhost:5000/user/${result.user.uid}`, {
+                                method: `PATCH`,
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                body: JSON.stringify(loggedUser)
+                            })
+                                .then(res => res.json())
+                                .then(data => console.log(data))
+                        })
                         .catch((error) => {
                             const errorMessage = error.message;
                             console.log(errorMessage);
@@ -48,7 +63,22 @@ const LogIn = () => {
     }
     const handleGoogle = () => {
         GoogleSignUp()
-            .then(result => console.log(result.user))
+            .then(result => {
+                console.log(result.user)
+
+                const loggedUser = {
+                    userLastSignInTime: result.user.metadata.lastSignInTime,
+                }
+                fetch(`http://localhost:5000/user/${result.user.uid}`, {
+                    method: `PATCH`,
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(loggedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => console.log(data))
+            })
             .catch((error) => {
                 const errorMessage = error.message;
                 console.log(errorMessage);
