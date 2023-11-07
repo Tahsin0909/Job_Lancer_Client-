@@ -47,12 +47,26 @@ const ContextApi = ({ children }) => {
         signOut(auth)
             .then(
                 setAuthUser({}),
+                setUser({})
             )
             .catch(error => console.log(error.message))
     }
+    // USer Fetch From Database
+
+    useEffect(() => {
+        if (AuthUser.uid) {
+            fetch(`http://localhost:5000/user/${AuthUser.uid}`)
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                    setUser(data)
+                })
+        }
+    }, [AuthUser.uid])
 
     const Data = {
         AuthUser,
+        User,
         PasswordSignUp,
         PasswordSignIn,
         GoogleSignUp,
