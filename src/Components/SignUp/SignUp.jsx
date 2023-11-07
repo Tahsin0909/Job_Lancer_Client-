@@ -82,7 +82,7 @@ const SignUp = () => {
             .then(result => {
                 console.log(result.user)
                 const SignedUser = {
-                    userName: "none",
+                    userName: result.user.displayName,
                     userEmail: result.user.email,
                     userFirebaseUid: result.user.uid,
                     userCreationTime: result.user.metadata.creationTime,
@@ -91,7 +91,7 @@ const SignUp = () => {
                     userCity: "none",
                     userZip: "none",
                     userSkill: "none",
-                    userPhoto: "none",
+                    userPhoto:result.user.photoURL,
                 }
                 console.log(SignedUser);
                 fetch('http://localhost:5000/user', {
