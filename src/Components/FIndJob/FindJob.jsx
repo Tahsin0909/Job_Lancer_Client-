@@ -39,12 +39,21 @@ const FindJob = () => {
     }
     const handleBid = (data) => {
         console.log(data);
+        const {email, jobTitle,jobCategory, postedDate, } = data
+        const watchListData ={
+            userFirebaseUid: User?.userFirebaseUid,
+            email: email,
+            jobTitle: jobTitle,
+            jobCategory: jobCategory,
+            postedDate: postedDate,
+            jobId: data._id
+        }
         fetch('http://localhost:5000/watchList', {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(watchListData)
         })
             .then(res => res.json())
             .then(resData=> console.log(resData))
