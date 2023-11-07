@@ -57,7 +57,7 @@ const Navbar = () => {
                             </div>
                             <div className="hidden md:flex items-center hover:text-green-400">
                                 {
-                                  AuthUser?.photoURL ? <img className="w-12 rounded-full" src={AuthUser?.photoURL} alt="" /> : <Link to={'/dashBoard'}> <CgProfile size={'40px'} /></Link>
+                                    AuthUser?.photoURL ? <Link to={'/dashBoard'}><img className="w-12 rounded-full" src={AuthUser?.photoURL} alt="" /></Link> : <Link to={'/dashBoard'}> <CgProfile size={'40px'} /></Link>
                                 }
                             </div>
                         </div>

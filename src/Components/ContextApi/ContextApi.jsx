@@ -55,7 +55,8 @@ const ContextApi = ({ children }) => {
         AuthUser,
         PasswordSignUp,
         PasswordSignIn,
-        GoogleSignUp
+        GoogleSignUp,
+        LogOut
     }
     return (
         <AuthContext.Provider value={Data}>

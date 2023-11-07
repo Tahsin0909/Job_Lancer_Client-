@@ -5,6 +5,7 @@ import MainHome from "./src/HomePage/MainHome";
 import HomeOutlet from "./src/HomePage/HomeOutlet";
 import SignUp from "./src/Components/SignUp/SignUp";
 import LogIn from "./src/Components/LogIn/LogIn";
+import DashBoard from "./src/Components/DashBoard/DashBoard";
 
 
 const Routes = createBrowserRouter([
@@ -23,6 +24,10 @@ const Routes = createBrowserRouter([
             {
                 path: "/logIn",
                 element:<LogIn></LogIn>
+            },
+            {
+                path: "/dashBoard",
+                element:<DashBoard></DashBoard>
             },
         ],
     },
