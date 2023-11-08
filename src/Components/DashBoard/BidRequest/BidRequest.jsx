@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../ContextApi/ContextApi";
 import { Link } from "react-router-dom";
-
+import './BidRequest.css'
 
 const BidRequest = () => {
     const { User } = useContext(AuthContext)
@@ -97,19 +97,19 @@ const BidRequest = () => {
                                     {/* head */}
                                     <thead>
                                         <tr className="text-green-900 ">
-                                            <th className="hide-on-tablet">
+                                            <th className="">
                                                 <p>Bid Request Email</p>
                                             </th>
-                                            <th className=" ">
+                                            <th className="hide-on-small ">
                                                 <p>Job Title</p>
                                             </th>
-                                            <th className="hide-on-small">
+                                            <th className="hide-on-small hide-on-tablet">
                                                 <p>Job Category</p>
                                             </th>
-                                            <th className="hide-on-tablet">
+                                            <th className="hide-on-tablet hide-on-tablet">
                                                 <p>Posted Date</p>
                                             </th>
-                                            <th className=" ">
+                                            <th className="hide-on-tablet ">
                                                 <p>Deadline</p>
                                             </th>
                                             <th className=" ">
@@ -135,12 +135,12 @@ const BidRequest = () => {
                                                 className={data?.status === "in Progress" ? 'text-blue-900' : data?.status === "completed" ? "text-green-600" : ' '}
                                             >
                                                 {/* row 1 */}
-                                                <td className="text-xs md:text-sm hide-on-tablet">{data?.bidRequestEmail}</td>
-                                                <td className="text-xs md:text-sm">{data?.jobTitle}</td>
-                                                <td className="text-xs md:text-sm">{data?.jobCategory}</td>
+                                                <td className="text-[10px] md:text-sm">{data?.bidRequestEmail}</td>
+                                                <td className="text-[10px] md:text-sm hide-on-small">{data?.jobTitle}</td>
+                                                <td className="text-xs md:text-sm hide-on-tablet">{data?.jobCategory}</td>
                                                 <td className="text-xs  border-2 w-fit hide-on-tablet">{data?.postedDate?.slice(0, 10)}</td>
-                                                <td className="text-xs md:text-sm border w-fit">{data?.deadLine?.slice(5, 11)}</td>
-                                                <td className="text-sm hide-on-small">{data?.status}</td>
+                                                <td className="text-xs md:text-sm border w-fit hide-on-tablet">{data?.deadLine}</td>
+                                                <td className="text-[10px] md:text-sm ">{data?.status}</td>
                                                 <td className=" ">
                                                     {
                                                         deadLinExceed(data)
@@ -155,7 +155,7 @@ const BidRequest = () => {
                         </div>
                         :
                         <Link to={"/addGig"}>
-                            <p className="py-40 text-xl hover:text-green-600 "><span className="text-lg">+</span>Post A Job</p>
+                            <p className="py-40 text-xl hover:text-green-600 "><span className="text-lg"></span>No Data Found</p>
                         </Link>
             }
         </div >

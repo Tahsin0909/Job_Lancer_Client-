@@ -1,0 +1,13 @@
+@media (max-width: 768px) {
+    .hide-on-tablet {
+        display: none;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 425px) {
+
+    /* Define your tablet-specific layout here */
+    .hide-on-small {
+        display: none;
+    }
+}
