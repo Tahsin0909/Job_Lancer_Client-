@@ -7,6 +7,7 @@ import WatchList from "./WatchList/WatchList";
 import MyJobPost from "./MyJobPost/MyJobPost";
 import MyGig from "./MyGig/MyGig";
 import MyBids from "./MyBids/MyBids";
+import BidRequest from "./BidRequest/BidRequest";
 
 const DashBoard = () => {
     const { User } = useContext(AuthContext)
@@ -43,7 +44,6 @@ const DashBoard = () => {
                         <Tab>Bid Request</Tab>
                         <Tab>My Bids</Tab>
                         <Tab>My GiG</Tab>
-                        <Tab>Fav Freelancer</Tab>
                         <Tab>WatchList</Tab>
                     </TabList>
 
@@ -51,16 +51,13 @@ const DashBoard = () => {
                         <MyJobPost/>
                     </TabPanel>
                     <TabPanel>
-                        <h2>Any content 2</h2>
+                        <BidRequest/>
                     </TabPanel>
                     <TabPanel>
                         <MyBids/>
                     </TabPanel>
                     <TabPanel>
                         <MyGig/>
-                    </TabPanel>
-                    <TabPanel>
-                        <h2>Any content 5</h2>
                     </TabPanel>
                     <TabPanel>
                         <WatchList />

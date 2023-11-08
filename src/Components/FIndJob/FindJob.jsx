@@ -41,6 +41,7 @@ const FindJob = () => {
         console.log(data);
         const { email, jobTitle, jobCategory, postedDate, _id, deadLine } = data
         const BdiData = {
+            bidRequestEmail: User?.userEmail,
             userFirebaseUid: User?.userFirebaseUid,
             email: email,
             jobTitle: jobTitle,
@@ -48,7 +49,7 @@ const FindJob = () => {
             postedDate: postedDate,
             deadLine: deadLine,
             jobId: _id,
-            status: "in Progress"
+            status: "applied"
         }
         fetch('http://localhost:5000/myBid', {
             method: `PUT`,

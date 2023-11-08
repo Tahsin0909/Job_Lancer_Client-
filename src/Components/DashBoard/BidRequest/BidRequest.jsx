@@ -3,23 +3,42 @@ import { AuthContext } from "../../ContextApi/ContextApi";
 import { Link } from "react-router-dom";
 
 
-const MyBids = () => {
+const BidRequest = () => {
     const { User } = useContext(AuthContext)
     const [loading, setLoading] = useState(true)
     const [myBidsData, setMyBidsData] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/myBid/${User.userFirebaseUid}`)
+        fetch(`http://localhost:5000/bidReq/${User.userEmail}`)
             .then(res => res.json())
             .then(data => {
                 setMyBidsData(data)
                 setLoading(false)
             })
-    }, [User.userFirebaseUid])
+    }, [User.userEmail])
     console.log(myBidsData);
-    const handleComplete = (id) => {
+    //Handle Accept 
+    const handleAccept = (id) => {
         console.log(id);
         const BidStatus = {
-            status: "completed"
+            status: "in Progress"
+        }
+        fetch(`http://localhost:5000/bid/${id}`, {
+            method: `PATCH`,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(BidStatus)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
+
+    const handleReject = (id) => {
+        console.log(id);
+        const BidStatus = {
+            status: "rejected"
         }
         fetch(`http://localhost:5000/bid/${id}`, {
             method: `PATCH`,
@@ -47,17 +66,18 @@ const MyBids = () => {
         if (day < currentDay) {
             console.log("job closed");
             return (
-                
+
                 <div className="flex flex-col items-center gap-1 ">
                     <button className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-blue-900 hover:text-white border-blue-900 bg-white text-blue-900 ">Job Closed</button>
                 </div>
             )
         }
         else {
-            if (data?.status === "in Progress") {
+            if (data?.status === "applied") {
                 return (
                     <div className="flex flex-col items-center gap-1 ">
-                        <button onClick={() => handleComplete(data?.jobId)} className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-blue-900 hover:text-white border-blue-900 bg-white text-blue-900 ">Completed</button>
+                        <button onClick={() => handleAccept(data?.jobId)} className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-blue-900 hover:text-white border-blue-900 bg-white text-blue-900 ">Accept</button>
+                        <button onClick={() => handleReject(data?.jobId)} className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-blue-900 hover:text-white border-blue-900 bg-white text-blue-900 ">Reject</button>
                     </div>
                 )
             }
@@ -78,7 +98,7 @@ const MyBids = () => {
                                     <thead>
                                         <tr className="text-green-900 ">
                                             <th className="hide-on-tablet">
-                                                <p>Job Posted Email</p>
+                                                <p>Bid Request Email</p>
                                             </th>
                                             <th className=" ">
                                                 <p>Job Title</p>
@@ -112,10 +132,10 @@ const MyBids = () => {
                                             // "postedDate": "2023-11-07T20:39:40.871Z",
                                             // "status": "in Progress"
                                             myBidsData?.map(data => <tr key={data._id}
-                                                className={data?.status === "in Progress" ? 'text-blue-900' : data?.status === "completed" ? "text-green-600" : data?.status === "rejected"? 'text-red-700': ''}
+                                                className={data?.status === "in Progress" ? 'text-blue-900' : data?.status === "completed" ? "text-green-600" : ' '}
                                             >
                                                 {/* row 1 */}
-                                                <td className="text-xs md:text-sm hide-on-tablet">{data?.email}</td>
+                                                <td className="text-xs md:text-sm hide-on-tablet">{data?.bidRequestEmail}</td>
                                                 <td className="text-xs md:text-sm">{data?.jobTitle}</td>
                                                 <td className="text-xs md:text-sm">{data?.jobCategory}</td>
                                                 <td className="text-xs  border-2 w-fit hide-on-tablet">{data?.postedDate?.slice(0, 10)}</td>
@@ -123,7 +143,7 @@ const MyBids = () => {
                                                 <td className="text-sm hide-on-small">{data?.status}</td>
                                                 <td className=" ">
                                                     {
-                                                            deadLinExceed(data)
+                                                        deadLinExceed(data)
                                                     }
                                                 </td>
                                             </tr>
@@ -142,4 +162,4 @@ const MyBids = () => {
     );
 };
 
-export default MyBids;
+export default BidRequest;
