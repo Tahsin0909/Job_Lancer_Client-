@@ -10,6 +10,7 @@ import PostJob from "./src/Components/PostJob/PostJob";
 import FindJob from "./src/Components/FIndJob/FindJob";
 import ErrorPage from "./src/Components/ErrorPage/ErrorPage";
 import AddGig from "./src/Components/DashBoard/MyGig/AddGig";
+import FindFreeLancer from "./src/Components/FindFreelancer/FindFreelancer";
 
 
 const Routes = createBrowserRouter([
@@ -45,6 +46,10 @@ const Routes = createBrowserRouter([
             {
                 path: "/addGig",
                 element:<AddGig></AddGig>
+            },
+            {
+                path: "/freelancers",
+                element:<FindFreeLancer></FindFreeLancer>
             },
         ],
     },
