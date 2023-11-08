@@ -9,6 +9,7 @@ import DashBoard from "./src/Components/DashBoard/DashBoard";
 import PostJob from "./src/Components/PostJob/PostJob";
 import FindJob from "./src/Components/FIndJob/FindJob";
 import ErrorPage from "./src/Components/ErrorPage/ErrorPage";
+import AddGig from "./src/Components/DashBoard/MyGig/AddGig";
 
 
 const Routes = createBrowserRouter([
@@ -40,6 +41,10 @@ const Routes = createBrowserRouter([
             {
                 path: "/jobs",
                 element:<FindJob></FindJob>
+            },
+            {
+                path: "/addGig",
+                element:<AddGig></AddGig>
             },
         ],
     },

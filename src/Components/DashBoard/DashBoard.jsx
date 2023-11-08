@@ -5,7 +5,7 @@ import { VscVerifiedFilled } from "react-icons/vsc";
 import 'react-tabs/style/react-tabs.css';
 import WatchList from "./WatchList/WatchList";
 import MyJobPost from "./MyJobPost/MyJobPost";
-import MyGig from "./MyJobPost/MyGig";
+import MyGig from "./MyGig/MyGig";
 
 const DashBoard = () => {
     const { User } = useContext(AuthContext)
