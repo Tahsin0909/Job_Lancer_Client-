@@ -19,7 +19,7 @@ const WatchList = () => {
         <div className="flex justify-center items-center py-8">
             {
                 loading ?
-                    <span className="loading loading-infinity text-green-900 loading-lg"></span>
+                    <span className="loading loading-infinity text-green-900 loading-lg py-40"></span>
                     :
                     <div>
                         <div className="overflow-x-auto">

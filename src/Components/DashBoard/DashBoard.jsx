@@ -1,23 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import { AuthContext } from "../ContextApi/ContextApi";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { VscVerifiedFilled } from "react-icons/vsc";
 import 'react-tabs/style/react-tabs.css';
 import WatchList from "./WatchList/WatchList";
+import MyJobPost from "./MyJobPost/MyJobPost";
+import MyGig from "./MyJobPost/MyGig";
 
 const DashBoard = () => {
     const { User } = useContext(AuthContext)
-    const [loading, setLoading] = useState(true)
-    const [WatchListData, setWatchListData] = useState([])
-    useEffect(() => {
-        fetch(`http://localhost:5000/watchList/${User.userFirebaseUid}`)
-            .then(res => res.json())
-            .then(data => {
-                setWatchListData(data)
-                setLoading(false)
-            })
-    }, [])
-    console.log(WatchListData);
     return (
         <div className="lg:px-32 md:px-10 px-4 pt-24">
             {/* profile */}
@@ -56,7 +47,7 @@ const DashBoard = () => {
                     </TabList>
 
                     <TabPanel>
-                        <h2>Any content 1</h2>
+                        <MyJobPost/>
                     </TabPanel>
                     <TabPanel>
                         <h2>Any content 2</h2>
@@ -65,7 +56,7 @@ const DashBoard = () => {
                         <h2>Any content 3</h2>
                     </TabPanel>
                     <TabPanel>
-                        <h2>Any content 4</h2>
+                        <MyGig/>
                     </TabPanel>
                     <TabPanel>
                         <h2>Any content 5</h2>

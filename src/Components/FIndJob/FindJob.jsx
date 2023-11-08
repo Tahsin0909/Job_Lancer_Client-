@@ -63,7 +63,7 @@ const FindJob = () => {
             <div className="flex justify-center">
                 <div>
                     {
-                        loading ? <span className="loading loading-infinity loading-lg"></span> : <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
+                        loading ? <span className="loading loading-infinity loading-lg text-green-600  py-80"></span> : <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
                             {
                                 jobData?.map(data => <div key={data._id}>
                                     <div className="border-2 p-3 rounded-md">
@@ -73,7 +73,7 @@ const FindJob = () => {
                                                 <AiOutlineHeart size={20} />
                                             </div>
                                             <div>
-                                                <p>{jobPOsted(data?.postedDate)}</p>
+                                                <p className="text-sm text-gray-300">{jobPOsted(data?.postedDate)}</p>
                                             </div>
                                         </div>
                                         <p className="border-2 mt-1 rounded-md w-[180px] p-1 border-green-600">{data.jobCategory}</p>
