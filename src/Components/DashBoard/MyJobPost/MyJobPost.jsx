@@ -71,11 +71,11 @@ const MyJobPost = () => {
                                                 <td className=" ">
                                                     <div className="flex flex-col items-center gap-1 ">
                                                         <button className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-green-900 hover:text-white border-green-900 bg-white text-green-900 ">Delete</button>
-                                                        <button className="text-xs py-1 md:px-2 md:w-24 w-14 border-2 hover:bg-green-900 hover:text-white border-green-900 bg-white text-green-900 ">Update</button>
+                                                        <Link to={`/updateJob/${data._id}`}>                                                        <button className="text-xs py-1 md:px-2 md:w-24 w-14 border-2 hover:bg-green-900 hover:text-white border-green-900 bg-white text-green-900 ">Update</button></Link>
                                                     </div>
                                                 </td>
                                             </tr>
-                                            )
+                                        )
                                         }
                                     </tbody>
                                 </table>
