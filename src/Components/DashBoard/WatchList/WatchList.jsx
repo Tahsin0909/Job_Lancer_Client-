@@ -7,7 +7,7 @@ const WatchList = () => {
     const [loading, setLoading] = useState(true)
     const [WatchListData, setWatchListData] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/watchList/${User.userFirebaseUid}`)
+        fetch(`https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/watchList/${User.userFirebaseUid}`)
             .then(res => res.json())
             .then(data => {
                 setWatchListData(data)

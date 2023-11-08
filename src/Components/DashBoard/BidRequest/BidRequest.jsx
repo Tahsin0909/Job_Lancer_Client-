@@ -8,7 +8,7 @@ const BidRequest = () => {
     const [loading, setLoading] = useState(true)
     const [myBidsData, setMyBidsData] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/bidReq/${User.userEmail}`)
+        fetch(`https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/bidReq/${User.userEmail}`)
             .then(res => res.json())
             .then(data => {
                 setMyBidsData(data)
@@ -22,7 +22,7 @@ const BidRequest = () => {
         const BidStatus = {
             status: "in Progress"
         }
-        fetch(`http://localhost:5000/bid/${id}`, {
+        fetch(`https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/bid/${id}`, {
             method: `PATCH`,
             headers: {
                 'content-type': 'application/json'
@@ -40,7 +40,7 @@ const BidRequest = () => {
         const BidStatus = {
             status: "rejected"
         }
-        fetch(`http://localhost:5000/bid/${id}`, {
+        fetch(`https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/bid/${id}`, {
             method: `PATCH`,
             headers: {
                 'content-type': 'application/json'

@@ -50,7 +50,7 @@ const SignUp = () => {
                                 userPhoto: picture_Url,
                             }
                             console.log(SignedUser);
-                            fetch('http://localhost:5000/user', {
+                            fetch('https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/user', {
                                 method: `POST`,
                                 headers: {
                                     'content-type': 'application/json'
@@ -94,7 +94,7 @@ const SignUp = () => {
                     userPhoto:result.user.photoURL,
                 }
                 console.log(SignedUser);
-                fetch('http://localhost:5000/user', {
+                fetch('https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/user', {
                     method: `POST`,
                     headers: {
                         'content-type': 'application/json'

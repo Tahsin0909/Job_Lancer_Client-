@@ -7,7 +7,7 @@ const Digital = () => {
     const [loading, setLoading] = useState(true)
     const [jobData, setJobData] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/jobCategory/Digital%20Marketing')
+        fetch('https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/jobCategory/Digital%20Marketing')
             .then(res => res.json())
             .then(data => {
                 setJobData(data)
@@ -51,7 +51,7 @@ const Digital = () => {
             jobId: _id,
             status: "applied"
         }
-        fetch('http://localhost:5000/myBid', {
+        fetch('https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/myBid', {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'
@@ -74,7 +74,7 @@ const Digital = () => {
             deadLine: deadLine,
             jobId: data._id
         }
-        fetch('http://localhost:5000/jobCategory/Graphic%20Design', {
+        fetch('https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/jobCategory/Graphic%20Design', {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'

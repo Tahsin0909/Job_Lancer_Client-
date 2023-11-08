@@ -8,7 +8,7 @@ const MyJobPost = () => {
     const [loading, setLoading] = useState(true)
     const [MyJobPostData, setMyJobPostData] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/job/${User.userFirebaseUid}`)
+        fetch(`https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/job/${User.userFirebaseUid}`)
             .then(res => res.json())
             .then(data => {
                 setMyJobPostData(data)

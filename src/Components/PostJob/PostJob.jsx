@@ -28,7 +28,7 @@ const PostJob = () => {
             email, jobTitle, description, minPrice, maxPrice, tag1, tag2, deadLine, jobCategory, postedDate, userFirebaseUid
         }
         // console.log(PostJobData);
-        fetch('http://localhost:5000/job', {
+        fetch('https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/job', {
             method: `POST`,
             headers: {
                 'content-type': 'application/json'
