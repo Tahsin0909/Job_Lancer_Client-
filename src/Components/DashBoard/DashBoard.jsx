@@ -6,6 +6,7 @@ import 'react-tabs/style/react-tabs.css';
 import WatchList from "./WatchList/WatchList";
 import MyJobPost from "./MyJobPost/MyJobPost";
 import MyGig from "./MyGig/MyGig";
+import MyBids from "./MyBids/MyBids";
 
 const DashBoard = () => {
     const { User } = useContext(AuthContext)
@@ -53,7 +54,7 @@ const DashBoard = () => {
                         <h2>Any content 2</h2>
                     </TabPanel>
                     <TabPanel>
-                        <h2>Any content 3</h2>
+                        <MyBids/>
                     </TabPanel>
                     <TabPanel>
                         <MyGig/>
