@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 
 
 const MyGig = () => {
     return (
         <div className='flex justify-center lg:px-32 md:px-10 px-4 pt-4 '>
-            <p> +Add Gig</p>
+            <Link to={"/gig"}>
+                <p className="py-40 text-xl hover:text-green-600 "><span className="text-lg">+</span>Add Gig</p>
+            </Link>
         </div>
     );
 };

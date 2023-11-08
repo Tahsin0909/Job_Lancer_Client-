@@ -8,12 +8,14 @@ import LogIn from "./src/Components/LogIn/LogIn";
 import DashBoard from "./src/Components/DashBoard/DashBoard";
 import PostJob from "./src/Components/PostJob/PostJob";
 import FindJob from "./src/Components/FIndJob/FindJob";
+import ErrorPage from "./src/Components/ErrorPage/ErrorPage";
 
 
 const Routes = createBrowserRouter([
     {
         path: "/",
         element: <MainHome></MainHome>,
+        errorElement:<ErrorPage errorMessage={'The page you are looking for not available!'}></ErrorPage>,
         children: [
             {
                 path: "/",
