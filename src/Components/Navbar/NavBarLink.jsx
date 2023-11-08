@@ -30,6 +30,14 @@ const NavBarLink = () => {
             <div className='md:hidden sm:flex flex-col'>
                 <li>
                     <NavLink
+                        to={`/dashBoard`}
+                        className={({ isActive, isPending }) =>
+                            isActive ? "text-green-700 underline font-semibold" : isPending ? "pending" : ""}>
+                        DashBoard
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
                         to={`/signIn`}
                         className={({ isActive, isPending }) =>
                             isActive ? "text-green-700 underline font-semibold" : isPending ? "pending" : ""}>

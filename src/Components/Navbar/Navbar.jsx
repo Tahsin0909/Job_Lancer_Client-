@@ -50,7 +50,7 @@ const Navbar = () => {
                 <Link to={'/postJob'} className="border px-2 py-[7px] text-white bg-green-700 rounded-lg">Post a Job</Link>
                 {
                     User?.userEmail ?
-                        <div className="lg:flex items-center gap-4  hidden">
+                        <div className="md:flex items-center gap-4  hidden">
                             <div className="hidden md:flex items-center hover:text-green-400">
                                 <IoLogInOutline size={'20px'} />
                                 <Link onClick={()=>LogOut()}>Log Out</Link>
@@ -62,7 +62,7 @@ const Navbar = () => {
                             </div>
                         </div>
                         :
-                        <div className="lg:flex items-center gap-4  hidden">
+                        <div className="md:flex items-center gap-4  hidden">
                             <div className="hidden md:flex items-center hover:text-green-400">
                                 <IoCreateOutline size={'20px'} />
                                 <Link to={'/signUp'}>Sign Up</Link>

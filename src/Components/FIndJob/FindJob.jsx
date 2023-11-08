@@ -59,7 +59,7 @@ const FindJob = () => {
             .then(resData=> console.log(resData))
     }
     return (
-        <div className="lg:px-32 md:px-10 px-4 pt-24">
+        <div className="lg:px-32 md:px-10 px-4 pt-24 pb-6">
             <div className="flex justify-center">
                 <div>
                     {
@@ -67,24 +67,24 @@ const FindJob = () => {
                             {
                                 jobData?.map(data => <div key={data._id}>
                                     <div className="border-2 p-3 rounded-md">
-                                        <div className="flex items-center justify-between">
+                                        <div className="flex flex-col md:flex-row items-center md:justify-between">
                                             <div className="flex items-center gap-4">
-                                                <p className="text-xl font-semibold">{data?.jobTitle}</p>
+                                                <p className="md:text-xl text-md font-semibold text-green-700">{data?.jobTitle}</p>
                                                 <AiOutlineHeart size={20} />
                                             </div>
                                             <div>
-                                                <p className="text-sm text-gray-300">{jobPOsted(data?.postedDate)}</p>
+                                                <p className="text-xs text-gray-300">{jobPOsted(data?.postedDate)}</p>
                                             </div>
                                         </div>
-                                        <p className="border-2 mt-1 rounded-md w-[180px] p-1 border-green-600">{data.jobCategory}</p>
-                                        <div className="flex items-center gap-2 mt-2">
-                                            <p>Price Range: {data.minPrice} -</p>
-                                            <p>{data.maxPrice}</p>
+                                        <p className="border-2 mt-1 md:text-sm text-xs rounded-md md:w-[150px] w-[130px] p-1 border-green-600">{data.jobCategory}</p>
+                                        <div className="flex items-center gap-2 mt-2 ">
+                                            <p className="text-sm font-semibold">Price Range: {data.minPrice} -</p>
+                                            <p className="text-sm font-semibold">{data.maxPrice}</p>
                                         </div>
-                                        <p className="">{data.description}</p>
+                                        <p className="mt-2 md:text-base text-xs">{data.description.slice(0, 120)}...</p>
                                         <div className="flex items-center gap-3 mt-2">
-                                            <p className="border-2 py-1 px-2 bg-gray-300 rounded-lg">{data.tag1}</p>
-                                            <p className="border-2 py-1 px-2 bg-gray-300 rounded-lg">{data.tag2}</p>
+                                            <p className="border-2 py-1 px-2 bg-gray-300 rounded-lg text-xs">{data.tag1}</p>
+                                            <p className="border-2 py-1 px-2 bg-gray-300 rounded-lg text-xs">{data.tag2}</p>
                                         </div>
                                         <div>
                                             {

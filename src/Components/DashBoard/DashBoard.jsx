@@ -12,8 +12,8 @@ const DashBoard = () => {
     return (
         <div className="lg:px-32 md:px-10 px-4 pt-24">
             {/* profile */}
-            <div className="flex justify-between w-full mb-4">
-                <div className="flex items-center gap-4">
+            <div className="flex flex-col md:flex-row gap-4 justify-between w-full mb-4">
+                <div className="flex flex-col md:flex-row items-center gap-4">
                     <img className="w-24 rounded-full" src={User.userPhoto} alt="" />
                     <div>
                         <div className="flex gap-1 items-center">

@@ -27,20 +27,20 @@ const WatchList = () => {
                                 {/* head */}
                                 <thead>
                                     <tr className="text-green-900">
-                                        <th>Job Email</th>
+                                        <th className="md:block hidden">Job Email</th>
                                         <th>Job Title</th>
                                         <th>Job Category</th>
-                                        <th>Posted Date</th>
+                                        <th className="md:block hidden">Posted Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {
                                         WatchListData?.map(data => <tr key={data._id}>
                                             {/* row 1 */}
-                                                <td>{data?.email}</td>
-                                                <td>{data.jobTitle}</td>
-                                                <td>{data?.jobCategory}</td>
-                                                <td>{data?.postedDate}</td>
+                                                <td className="md:text-base text-xs md:block hidden">{data?.email}</td>
+                                                <td className="md:text-base text-xs">{data.jobTitle}</td>
+                                                <td className="md:text-base text-xs">{data?.jobCategory}</td>
+                                                <td className="md:text-base text-xs md:block hidden">{data?.postedDate.slice(0, 10)}</td>
                                         </tr>
                                         )
                                     }
