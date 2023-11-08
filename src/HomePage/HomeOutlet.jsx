@@ -4,6 +4,7 @@ import ForClients from "../Components/ForClients/ForClients";
 import ForFreelancer from "../Components/ForFreelancer/ForFreelancer";
 import Motivation from "../Components/MotivationSlider/Motivation";
 import SliderMotiv from "../Components/MotivationSlider/SliderMotiv";
+import PopularServices from "../Components/PopularServices/PopularServices";
 import WhyChooseUs from "../Components/WhyChooseUs/WhyChooseUs";
 
 
@@ -12,7 +13,8 @@ const HomeOutlet = () => {
         <div className="pt-20 ">
             <div className="">
                 <Banner></Banner>
-                {/* <SliderMotiv></SliderMotiv> */}
+                <SliderMotiv></SliderMotiv>
+                <PopularServices></PopularServices>
                 <ForClients></ForClients>
                 <Motivation></Motivation>
                 <ForFreelancer></ForFreelancer>

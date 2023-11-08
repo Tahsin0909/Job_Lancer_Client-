@@ -15,7 +15,7 @@ const SliderMotiv = () => {
 
                 <div id="item1" className={select == 1 ? 'block carousel-item w-full' : 'hidden'}>
                     <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-                        <iframe width="300" height="200" src="https://www.youtube.com/embed/g-jwWYX7Jlo?si=mRyCS_O4Bmv49O6b&amp;start=6" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="300" height="200" src="https://www.youtube.com/embed/g-jwWYX7Jlo?si=mRyCS_O4Bmv49O6b&amp;start=6" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         <p className="text-xl font-[Kenia]">"Great things in business are never done by one person. They're done by a team of people."<br />- Steve Jobs </p>
                     </div>
                 </div>
