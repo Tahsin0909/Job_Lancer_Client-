@@ -9,7 +9,9 @@ const FindJob = () => {
     const [loading, setLoading] = useState(true)
     const [jobData, setJobData] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/job')
+        fetch('http://localhost:5000/job',{
+            credentials: 'include'
+        })
             .then(res => res.json())
             .then(data => {
                 setJobData(data)

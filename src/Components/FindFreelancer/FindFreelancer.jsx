@@ -8,7 +8,9 @@ const FindFreeLancer = () => {
     const [loading, setLoading] = useState(true)
     const [FreelancerData, setFreelancerData] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/gig`)
+        fetch(`http://localhost:5000/gig`,{
+            credentials: 'include'
+        })
             .then(res => res.json())
             .then(data => {
                 setFreelancerData(data)

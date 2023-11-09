@@ -10,9 +10,10 @@ import WhyChooseUs from "../Components/WhyChooseUs/WhyChooseUs";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../Components/ContextApi/ContextApi";
 import { Helmet } from "react-helmet";
-
+import { motion, useScroll } from "framer-motion"
 
 const HomeOutlet = () => {
+    const { scrollYProgress } = useScroll();
     const { AuthUser } = useContext(AuthContext)
     const ToastData = localStorage.getItem('ToastShow')
     const willShowToast = JSON.parse(ToastData)
@@ -36,7 +37,11 @@ const HomeOutlet = () => {
                 <meta charSet="utf-8" />
                 <title>Job Lancer</title>
             </Helmet>
+
+
+
             <div className="">
+                <motion.div style={{ scaley: scrollYProgress }} />
                 <Banner></Banner>
                 <SliderMotiv></SliderMotiv>
                 <PopularServices></PopularServices>
@@ -45,11 +50,16 @@ const HomeOutlet = () => {
                 <ForFreelancer></ForFreelancer>
                 <AboutUs></AboutUs>
                 <WhyChooseUs></WhyChooseUs>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                />
             </div>
             <Toaster
                 position="top-center"
                 reverseOrder={true}
             />
+
         </div>
     );
 };

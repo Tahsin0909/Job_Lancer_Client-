@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { AuthContext } from "../ContextApi/ContextApi";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 const LogIn = () => {
     const { PasswordSignIn, GoogleSignUp } = useContext(AuthContext)
     //Error MAssage State for password
@@ -46,6 +47,11 @@ const LogIn = () => {
                                 .then(res => res.json())
                                 .then(data => console.log(data))
                             localStorage.setItem('ToastShow', JSON.stringify('false'))
+                            axios.post('http://localhost:5000/jwt', {
+                                email: email,
+                                password: password
+                            }, { withCredentials: true })
+                                .then(res => console.log(res.data))
                         })
                         .catch((error) => {
                             const errorMessage = error.message;
