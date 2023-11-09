@@ -44,6 +44,7 @@ const LogIn = () => {
                             })
                                 .then(res => res.json())
                                 .then(data => console.log(data))
+                            localStorage.setItem('ToastShow', JSON.stringify('false'))
                         })
                         .catch((error) => {
                             const errorMessage = error.message;
@@ -78,6 +79,7 @@ const LogIn = () => {
                 })
                     .then(res => res.json())
                     .then(data => console.log(data))
+                localStorage.setItem('ToastShow', JSON.stringify('false'))
             })
             .catch((error) => {
                 const errorMessage = error.message;

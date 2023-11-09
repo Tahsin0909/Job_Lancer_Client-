@@ -4,10 +4,11 @@ import { IoLogInOutline, IoCreateOutline } from "react-icons/io5";
 import { useContext } from "react";
 import { AuthContext } from "../ContextApi/ContextApi";
 import { CgProfile } from 'react-icons/cg';
+import toast, { Toaster } from "react-hot-toast";
 
 
 const Navbar = () => {
-    const { User,LogOut } = useContext(AuthContext)
+    const { User, LogOut } = useContext(AuthContext)
     console.log(User);
     return (
         <div className="flex justify-between items-center lg:px-32 md:px-10 px-4 border-b py-3 fixed w-full bg-white z-50">
@@ -53,7 +54,7 @@ const Navbar = () => {
                         <div className="md:flex items-center gap-4  hidden">
                             <div className="hidden md:flex items-center hover:text-green-400">
                                 <IoLogInOutline size={'20px'} />
-                                <Link onClick={()=>LogOut()}>Log Out</Link>
+                                <Link onClick={() => { LogOut(), toast.success('Log Out Successful') }}>Log Out</Link>
                             </div>
                             <div className="hidden md:flex items-center hover:text-green-400">
                                 {
@@ -74,6 +75,10 @@ const Navbar = () => {
                         </div>
                 }
             </div>
+            <Toaster
+                position="top-center"
+                reverseOrder={true}
+            />
         </div>
     )
 };

@@ -59,6 +59,7 @@ const SignUp = () => {
                             })
                                 .then(res => res.json())
                                 .then(data => console.log(data))
+                            localStorage.setItem('ToastShow', JSON.stringify('false'))
                         })
                         .catch((error) => {
                             const errorMessage = error.message;
@@ -91,7 +92,7 @@ const SignUp = () => {
                     userCity: "none",
                     userZip: "none",
                     userSkill: "none",
-                    userPhoto:result.user.photoURL,
+                    userPhoto: result.user.photoURL,
                 }
                 console.log(SignedUser);
                 fetch('http://localhost:5000/user', {
@@ -103,6 +104,7 @@ const SignUp = () => {
                 })
                     .then(res => res.json())
                     .then(data => console.log(data))
+                localStorage.setItem('ToastShow', JSON.stringify('false'))
             })
             .catch((error) => {
                 const errorMessage = error.message;
