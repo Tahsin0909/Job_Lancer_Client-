@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../ContextApi/ContextApi";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 // onSubmit={(e) => handleSignUp(e)}
 const PostJob = () => {
@@ -60,6 +61,10 @@ const PostJob = () => {
     }
     return (
         <div className="lg:px-32 md:px-10 px-4 pt-24">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Post</title>
+            </Helmet>
             <div className="flex  justify-center mb-5">
                 <form onSubmit={(e) => handlePostJob(e)}>
                     <div className=" w-full ">

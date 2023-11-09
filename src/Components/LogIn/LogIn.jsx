@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { AuthContext } from "../ContextApi/ContextApi";
+import { Helmet } from "react-helmet";
 const LogIn = () => {
     const { PasswordSignIn, GoogleSignUp } = useContext(AuthContext)
     //Error MAssage State for password
@@ -88,6 +89,10 @@ const LogIn = () => {
     }
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Log In</title>
+            </Helmet>
             <div className="pt-24 pb-10">
                 <div className="flex flex-col-reverse lg:flex-row gap-4  justify-center items-center">
                     <div className=" lg:w-[500px]">

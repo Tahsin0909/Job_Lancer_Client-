@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext } from "react";
 import { AuthContext } from "../ContextApi/ContextApi";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { VscVerifiedFilled } from "react-icons/vsc";
@@ -8,11 +8,16 @@ import MyJobPost from "./MyJobPost/MyJobPost";
 import MyGig from "./MyGig/MyGig";
 import MyBids from "./MyBids/MyBids";
 import BidRequest from "./BidRequest/BidRequest";
+import { Helmet } from "react-helmet";
 
 const DashBoard = () => {
     const { User } = useContext(AuthContext)
     return (
         <div className="lg:px-32 md:px-10 px-4 pt-24">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>DashBoard</title>
+            </Helmet>
             {/* profile */}
             <div className="flex flex-col md:flex-row gap-4 justify-between w-full mb-4">
                 <div className="flex flex-col md:flex-row items-center gap-4">
@@ -48,16 +53,16 @@ const DashBoard = () => {
                     </TabList>
 
                     <TabPanel>
-                        <MyJobPost/>
+                        <MyJobPost />
                     </TabPanel>
                     <TabPanel>
-                        <BidRequest/>
+                        <BidRequest />
                     </TabPanel>
                     <TabPanel>
-                        <MyBids/>
+                        <MyBids />
                     </TabPanel>
                     <TabPanel>
-                        <MyGig/>
+                        <MyGig />
                     </TabPanel>
                     <TabPanel>
                         <WatchList />

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../ContextApi/ContextApi";
 import { AiOutlineHeart } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const FindJob = () => {
     const { User } = useContext(AuthContext)
@@ -152,6 +153,10 @@ const FindJob = () => {
     }
     return (
         <div className="lg:px-32 md:px-10 px-4 pt-24 pb-6">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Jobs</title>
+            </Helmet>
             <div className="flex justify-center">
                 <div>
                     {

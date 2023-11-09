@@ -1,4 +1,5 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 
 
@@ -17,6 +18,10 @@ const FindFreeLancer = () => {
     console.log(FreelancerData);
     return (
         <div className="flex justify-center items-center py-8 pt-24">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Freelancer</title>
+            </Helmet>
             {
                 loading ?
                     <span className="loading loading-infinity text-green-900 loading-lg py-40"></span>

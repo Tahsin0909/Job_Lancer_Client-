@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../ContextApi/ContextApi";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 // onSubmit={(e) => handleSignUp(e)}
 const UpdateJob = () => {
@@ -75,6 +76,10 @@ const UpdateJob = () => {
     }
     return (
         <div className="lg:px-32 md:px-10 px-4 pt-24 flex justify-center">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Update</title>
+            </Helmet>
             {
                 loading ? <span className="loading loading-infinity text-green-900 loading-lg text-center py-48"></span> :
                     <div className="flex justify-center mb-5">

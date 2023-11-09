@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { AuthContext } from "../ContextApi/ContextApi";
+import { Helmet } from "react-helmet";
 
 
 const SignUp = () => {
@@ -114,6 +115,10 @@ const SignUp = () => {
     return (
         <div>
             <div className="pt-24 pb-10">
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Sign Up</title>
+                </Helmet>
                 <div className="flex flex-col-reverse lg:flex-row gap-4  justify-center ">
                     <div className="flex justify-center">
                         <div >

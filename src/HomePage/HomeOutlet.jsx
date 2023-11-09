@@ -9,6 +9,7 @@ import PopularServices from "../Components/PopularServices/PopularServices";
 import WhyChooseUs from "../Components/WhyChooseUs/WhyChooseUs";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../Components/ContextApi/ContextApi";
+import { Helmet } from "react-helmet";
 
 
 const HomeOutlet = () => {
@@ -31,6 +32,10 @@ const HomeOutlet = () => {
     }, [willShowToast, AuthUser.email, logInToast, ToastData])
     return (
         <div className="pt-20 ">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Job Lancer</title>
+            </Helmet>
             <div className="">
                 <Banner></Banner>
                 <SliderMotiv></SliderMotiv>
