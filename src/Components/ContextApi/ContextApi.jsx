@@ -11,6 +11,7 @@ const ContextApi = ({ children }) => {
     // emailAndPassword Authentication
     const [AuthUser, setAuthUser] = useState({})
     const [User, setUser] = useState({})
+    const [loading, setLoading] = useState(true)
     // console.log(loading)
 
     // sign up
@@ -60,12 +61,14 @@ const ContextApi = ({ children }) => {
                 .then(data => {
                     // console.log(data);
                     setUser(data)
+                    setLoading(false)
                 })
         }
     }, [AuthUser.uid])
 
     const Data = {
         AuthUser,
+        loading,
         User,
         PasswordSignUp,
         PasswordSignIn,

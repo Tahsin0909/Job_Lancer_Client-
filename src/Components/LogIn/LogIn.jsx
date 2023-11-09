@@ -3,7 +3,12 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { AuthContext } from "../ContextApi/ContextApi";
 import { Helmet } from "react-helmet";
 import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 const LogIn = () => {
+    // Navigate After LOgIn
+    const location = useLocation()
+    const navigate = useNavigate()
+
     const { PasswordSignIn, GoogleSignUp } = useContext(AuthContext)
     //Error MAssage State for password
     const [passwordError, setPasswordError] = useState('')
@@ -52,6 +57,7 @@ const LogIn = () => {
                                 password: password
                             }, { withCredentials: true })
                                 .then(res => console.log(res.data))
+                            location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
                         })
                         .catch((error) => {
                             const errorMessage = error.message;

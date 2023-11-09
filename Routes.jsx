@@ -12,6 +12,7 @@ import ErrorPage from "./src/Components/ErrorPage/ErrorPage";
 import AddGig from "./src/Components/DashBoard/MyGig/AddGig";
 import FindFreeLancer from "./src/Components/FindFreelancer/FindFreelancer";
 import UpdateJob from "./src/Components/UpdateJob/UpdateJob";
+import PrivetRoutes from "./src/Components/PrivateRoute/PrivatrRoute";
 
 
 const Routes = createBrowserRouter([
@@ -34,15 +35,15 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/dashBoard",
-                element:<DashBoard></DashBoard>
+                element:<PrivetRoutes><DashBoard></DashBoard></PrivetRoutes>
             },
             {
                 path: "/postJob",
-                element:<PostJob></PostJob>
+                element:<PrivetRoutes><PostJob></PostJob></PrivetRoutes>
             },
             {
                 path: "/jobs",
-                element:<FindJob></FindJob>
+                element:<PrivetRoutes><FindJob></FindJob></PrivetRoutes>
             },
             {
                 path: "/addGig",
@@ -50,7 +51,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/freelancers",
-                element:<FindFreeLancer></FindFreeLancer>
+                element:<PrivetRoutes><FindFreeLancer></FindFreeLancer></PrivetRoutes>
             },
             {
                 path: "/updateJob/:_id",
