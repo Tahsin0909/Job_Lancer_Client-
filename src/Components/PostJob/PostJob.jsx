@@ -42,8 +42,9 @@ const PostJob = () => {
                 if (data.acknowledged) {
                     Swal.fire({
                         title: 'Success',
-                        text: 'Your Product Updated Successfully',
+                        text: 'Your Job Posted Successfully',
                         icon: 'success',
+                        confirmButtonColor: "#14532d",
                         confirmButtonText: 'DONE'
                     })
                 }

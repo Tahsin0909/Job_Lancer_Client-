@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../ContextApi/ContextApi";
 import { AiOutlineHeart } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const FindJob = () => {
     const { User } = useContext(AuthContext)
@@ -59,7 +60,25 @@ const FindJob = () => {
             body: JSON.stringify(BdiData)
         })
             .then(res => res.json())
-            .then(resData => console.log(resData))
+            .then(resdata => {
+                console.log(resdata)
+                if (resdata.upsertedCount > 0) {
+                    Swal.fire({
+                        title: 'Success',
+                        text: `Bid Request Send ${data.email}`,
+                        icon: 'success',
+                        confirmButtonText: 'Done'
+                    })
+                }
+                else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'You Have already Bid',
+                        icon: 'error',
+                        confirmButtonText: 'Try Again'
+                    })
+                }
+            })
     }
     const handleWatchList = (data) => {
         console.log(data);
@@ -82,7 +101,25 @@ const FindJob = () => {
             body: JSON.stringify(watchListData)
         })
             .then(res => res.json())
-            .then(resData => console.log(resData))
+            .then(resdata => {
+                console.log(resdata)
+                if (resdata.upsertedCount > 0) {
+                    Swal.fire({
+                        title: 'Success',
+                        text: `${data.jobTitle} Added To WatchList`,
+                        icon: 'success',
+                        confirmButtonText: 'Done'
+                    })
+                }
+                else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'You are Watching The Job',
+                        icon: 'error',
+                        confirmButtonText: 'Try Again'
+                    })
+                }
+            })
     }
     const deadLinExceed = (data) => {
         // console.log(data);

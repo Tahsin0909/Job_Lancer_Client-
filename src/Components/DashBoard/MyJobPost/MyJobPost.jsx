@@ -39,7 +39,7 @@ const MyJobPost = () => {
                         if (NewData.acknowledged) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your Job has been deleted.",
                                 icon: "success"
                             });
                         }

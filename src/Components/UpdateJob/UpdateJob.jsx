@@ -58,7 +58,7 @@ const UpdateJob = () => {
                 if (data.acknowledged) {
                     Swal.fire({
                         title: 'Success',
-                        text: 'Your Product Updated Successfully',
+                        text: 'Your Job Updated Successfully',
                         icon: 'success',
                         confirmButtonText: 'DONE'
                     })
