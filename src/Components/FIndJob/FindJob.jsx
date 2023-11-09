@@ -7,7 +7,7 @@ const FindJob = () => {
     const [loading, setLoading] = useState(true)
     const [jobData, setJobData] = useState([])
     useEffect(() => {
-        fetch('https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/job')
+        fetch('http://localhost:5000/job')
             .then(res => res.json())
             .then(data => {
                 setJobData(data)
@@ -51,7 +51,7 @@ const FindJob = () => {
             jobId: _id,
             status: "applied"
         }
-        fetch('https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/myBid', {
+        fetch('http://localhost:5000/myBid', {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'
@@ -74,7 +74,7 @@ const FindJob = () => {
             deadLine: deadLine,
             jobId: data._id
         }
-        fetch('https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/watchList', {
+        fetch('http://localhost:5000/watchList', {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'

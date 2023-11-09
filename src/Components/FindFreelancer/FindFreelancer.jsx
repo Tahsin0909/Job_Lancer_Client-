@@ -7,7 +7,7 @@ const FindFreeLancer = () => {
     const [loading, setLoading] = useState(true)
     const [FreelancerData, setFreelancerData] = useState([])
     useEffect(() => {
-        fetch(`https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/gig`)
+        fetch(`http://localhost:5000/gig`)
             .then(res => res.json())
             .then(data => {
                 setFreelancerData(data)

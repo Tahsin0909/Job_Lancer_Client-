@@ -8,7 +8,7 @@ const MyBids = () => {
     const [loading, setLoading] = useState(true)
     const [myBidsData, setMyBidsData] = useState([])
     useEffect(() => {
-        fetch(`https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/myBid/${User.userFirebaseUid}`)
+        fetch(`http://localhost:5000/myBid/${User.userFirebaseUid}`)
             .then(res => res.json())
             .then(data => {
                 setMyBidsData(data)
@@ -21,7 +21,7 @@ const MyBids = () => {
         const BidStatus = {
             status: "completed"
         }
-        fetch(`https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/bid/${id}`, {
+        fetch(`http://localhost:5000/bid/${id}`, {
             method: `PATCH`,
             headers: {
                 'content-type': 'application/json'

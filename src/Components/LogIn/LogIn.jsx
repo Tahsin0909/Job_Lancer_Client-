@@ -35,7 +35,7 @@ const LogIn = () => {
                             const loggedUser = {
                                 userLastSignInTime: result.user.metadata.lastSignInTime,
                             }
-                            fetch(`https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/user/${result.user.uid}`, {
+                            fetch(`http://localhost:5000/user/${result.user.uid}`, {
                                 method: `PATCH`,
                                 headers: {
                                     'content-type': 'application/json'
@@ -69,7 +69,7 @@ const LogIn = () => {
                 const loggedUser = {
                     userLastSignInTime: result.user.metadata.lastSignInTime,
                 }
-                fetch(`https://job-lancer-server-g4ql1g75m-tahsins-projects-38f8b810.vercel.app/user/${result.user.uid}`, {
+                fetch(`http://localhost:5000/user/${result.user.uid}`, {
                     method: `PATCH`,
                     headers: {
                         'content-type': 'application/json'
