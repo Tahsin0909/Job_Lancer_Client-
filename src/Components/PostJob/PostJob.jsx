@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../ContextApi/ContextApi";
+import Swal from "sweetalert2";
 
 // onSubmit={(e) => handleSignUp(e)}
 const PostJob = () => {
@@ -36,7 +37,25 @@ const PostJob = () => {
             body: JSON.stringify(PostJobData)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'Your Product Updated Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'DONE'
+                    })
+                }
+                else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Do you want to continue',
+                        icon: 'error',
+                        confirmButtonText: 'Try Again'
+                    })
+                }
+            })
     }
     return (
         <div className="lg:px-32 md:px-10 px-4 pt-24">

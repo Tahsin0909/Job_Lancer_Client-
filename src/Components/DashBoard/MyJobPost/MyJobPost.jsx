@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../ContextApi/ContextApi";
 import { Link } from "react-router-dom";
 import './MyJobPost.css'
+import Swal from "sweetalert2";
 
 const MyJobPost = () => {
     const { User } = useContext(AuthContext)
@@ -16,6 +17,45 @@ const MyJobPost = () => {
             })
     }, [User.userFirebaseUid])
     console.log(MyJobPostData);
+
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#14532d",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/updateJob/${id}`, {
+                    method: 'DELETE'
+                })
+                const remaining = MyJobPostData.filter(jobs => jobs._id !== id)
+                setMyJobPostData(remaining)
+                    .then(res => res.json())
+                    .then(NewData => {
+                        if (NewData.acknowledged) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                        else {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Do you want to continue',
+                                icon: 'error',
+                                confirmButtonText: 'Try Again'
+                            })
+                        }
+
+                    })
+            }
+        });
+    }
     return (
         <div className="flex justify-center items-center py-2">
             {
@@ -70,12 +110,12 @@ const MyJobPost = () => {
                                                 <td className="text-xs md:text-sm border w-fit">{data?.deadLine.slice(5, 11)}</td>
                                                 <td className=" ">
                                                     <div className="flex flex-col items-center gap-1 ">
-                                                        <button className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-green-900 hover:text-white border-green-900 bg-white text-green-900 ">Delete</button>
-                                                        <Link to={`/updateJob/${data._id}`}>                                                        <button className="text-xs py-1 md:px-2 md:w-24 w-14 border-2 hover:bg-green-900 hover:text-white border-green-900 bg-white text-green-900 ">Update</button></Link>
+                                                        <button onClick={() => handleDelete(data._id)} className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-green-900 hover:text-white border-green-900 bg-white text-green-900 ">Delete</button>
+                                                        <Link to={`/updateJob/${data._id}`}><button className="text-xs py-1 md:px-2 md:w-24 w-14 border-2 hover:bg-green-900 hover:text-white border-green-900 bg-white text-green-900 ">Update</button></Link>
                                                     </div>
                                                 </td>
                                             </tr>
-                                        )
+                                            )
                                         }
                                     </tbody>
                                 </table>
