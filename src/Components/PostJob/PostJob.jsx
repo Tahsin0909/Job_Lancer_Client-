@@ -60,7 +60,7 @@ const PostJob = () => {
     }
     return (
         <div className="lg:px-32 md:px-10 px-4 pt-24">
-            <div className="flex justify-center mb-5">
+            <div className="flex  justify-center mb-5">
                 <form onSubmit={(e) => handlePostJob(e)}>
                     <div className=" w-full ">
                         <label className="label">
