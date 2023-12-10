@@ -9,7 +9,7 @@ const FindJob = () => {
     const [loading, setLoading] = useState(true)
     const [jobData, setJobData] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/job',{
+        fetch('https://joblancernewserver.vercel.app/job',{
             credentials: 'include'
         })
             .then(res => res.json())
@@ -55,7 +55,7 @@ const FindJob = () => {
             jobId: _id,
             status: "applied"
         }
-        fetch('http://localhost:5000/myBid', {
+        fetch('https://joblancernewserver.vercel.app/myBid', {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'
@@ -96,7 +96,7 @@ const FindJob = () => {
             deadLine: deadLine,
             jobId: data._id
         }
-        fetch('http://localhost:5000/watchList', {
+        fetch('https://joblancernewserver.vercel.app/watchList', {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'

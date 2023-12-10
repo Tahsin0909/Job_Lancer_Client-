@@ -7,7 +7,7 @@ const WebDevelopment = () => {
     const [loading, setLoading] = useState(true)
     const [jobData, setJobData] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/jobCategory/Web%20Development')
+        fetch('https://joblancernewserver.vercel.app/jobCategory/Web%20Development')
             .then(res => res.json())
             .then(data => {
                 setJobData(data)
@@ -51,7 +51,7 @@ const WebDevelopment = () => {
             jobId: _id,
             status: "applied"
         }
-        fetch('http://localhost:5000/myBid', {
+        fetch('https://joblancernewserver.vercel.app/myBid', {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'
@@ -74,7 +74,7 @@ const WebDevelopment = () => {
             deadLine: deadLine,
             jobId: data._id
         }
-        fetch('http://localhost:5000/watchList', {
+        fetch('https://joblancernewserver.vercel.app/watchList', {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'

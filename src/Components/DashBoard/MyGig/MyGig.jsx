@@ -8,7 +8,7 @@ const MyGig = () => {
     const [loading, setLoading] = useState(true)
     const [GigData, setGigData] = useState(null)
     useEffect(() => {
-        fetch(`http://localhost:5000/gig/${User.userFirebaseUid}`)
+        fetch(`https://joblancernewserver.vercel.app/gig/${User.userFirebaseUid}`)
             .then(res => res.json())
             .then(data => {
                 setGigData(data)

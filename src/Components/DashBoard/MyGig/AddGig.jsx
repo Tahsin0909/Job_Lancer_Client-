@@ -27,7 +27,7 @@ const AddGig = () => {
             email, gigTitle, description, minPrice, maxPrice, tag1, tag2, rating, gigCategory,  userFirebaseUid, userName, userPhoto, photoUrl
         }
         console.log(PostGigData);
-        fetch('http://localhost:5000/gig', {
+        fetch('https://joblanceer.vercel.app/gig', {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'

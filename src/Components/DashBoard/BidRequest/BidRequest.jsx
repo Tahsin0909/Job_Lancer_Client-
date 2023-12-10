@@ -8,7 +8,7 @@ const BidRequest = () => {
     const [loading, setLoading] = useState(true)
     const [myBidsData, setMyBidsData] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/bidReq/${User.userEmail}`)
+        fetch(`https://joblancernewserver.vercel.app/bidReq/${User.userEmail}`)
             .then(res => res.json())
             .then(data => {
                 setMyBidsData(data)
@@ -17,12 +17,13 @@ const BidRequest = () => {
     }, [User.userEmail])
     console.log(myBidsData);
     //Handle Accept 
-    const handleAccept = (id) => {
-        console.log(id);
+    const handleAccept = (data) => {
+        // console.log(DataTransferItemList);
         const BidStatus = {
+            bidRequestEmail: data?.bidRequestEmail,
             status: "in Progress"
         }
-        fetch(`http://localhost:5000/bid/${id}`, {
+        fetch(`https://joblancernewserver.vercel.app/bid/${data?.jobId}`, {
             method: `PATCH`,
             headers: {
                 'content-type': 'application/json'
@@ -35,12 +36,13 @@ const BidRequest = () => {
             })
     }
 
-    const handleReject = (id) => {
-        console.log(id);
+    const handleReject = (data) => {
+        // console.log(id);
         const BidStatus = {
+            bidRequestEmail: data?.bidRequestEmail,
             status: "rejected"
         }
-        fetch(`http://localhost:5000/bid/${id}`, {
+        fetch(`https://joblancernewserver.vercel.app/bid/${data?.jobId}`, {
             method: `PATCH`,
             headers: {
                 'content-type': 'application/json'
@@ -76,8 +78,8 @@ const BidRequest = () => {
             if (data?.status === "applied") {
                 return (
                     <div className="flex flex-col items-center gap-1 ">
-                        <button onClick={() => handleAccept(data?.jobId)} className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-blue-900 hover:text-white border-blue-900 bg-white text-blue-900 ">Accept</button>
-                        <button onClick={() => handleReject(data?.jobId)} className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-blue-900 hover:text-white border-blue-900 bg-white text-blue-900 ">Reject</button>
+                        <button onClick={() => handleAccept(data)} className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-blue-900 hover:text-white border-blue-900 bg-white text-blue-900 ">Accept</button>
+                        <button onClick={() => handleReject(data)} className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-blue-900 hover:text-white border-blue-900 bg-white text-blue-900 ">Reject</button>
                     </div>
                 )
             }

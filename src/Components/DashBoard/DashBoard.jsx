@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../ContextApi/ContextApi";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { VscVerifiedFilled } from "react-icons/vsc";
@@ -11,7 +11,19 @@ import BidRequest from "./BidRequest/BidRequest";
 import { Helmet } from "react-helmet";
 
 const DashBoard = () => {
-    const { User } = useContext(AuthContext)
+    const { User, AuthUser, setUser, setLoading } = useContext(AuthContext)
+    useEffect(() => {
+        if (AuthUser.uid) {
+            fetch(`https://joblancernewserver.vercel.app/user/${AuthUser.uid}`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setUser(data)
+                    setLoading(false)
+                })
+
+        }
+    }, [AuthUser.uid,  setUser, setLoading ])
     return (
         <div className="lg:px-32 md:px-10 px-4 pt-24">
             <Helmet>

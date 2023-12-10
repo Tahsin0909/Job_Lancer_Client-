@@ -9,7 +9,7 @@ const MyJobPost = () => {
     const [loading, setLoading] = useState(true)
     const [MyJobPostData, setMyJobPostData] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/job/${User.userFirebaseUid}`)
+        fetch(`https://joblancernewserver.vercel.app/job/${User.userFirebaseUid}`)
             .then(res => res.json())
             .then(data => {
                 setMyJobPostData(data)
@@ -29,7 +29,7 @@ const MyJobPost = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/updateJob/${id}`, {
+                fetch(`https://joblancernewserver.vercel.app/updateJob/${id}`, {
                     method: 'DELETE'
                 })
                 const remaining = MyJobPostData.filter(jobs => jobs._id !== id)

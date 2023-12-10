@@ -42,7 +42,7 @@ const LogIn = () => {
                             const loggedUser = {
                                 userLastSignInTime: result.user.metadata.lastSignInTime,
                             }
-                            fetch(`http://localhost:5000/user/${result.user.uid}`, {
+                            fetch(`https://joblancernewserver.vercel.app/user/${result.user.uid}`, {
                                 method: `PATCH`,
                                 headers: {
                                     'content-type': 'application/json'
@@ -52,7 +52,7 @@ const LogIn = () => {
                                 .then(res => res.json())
                                 .then(data => console.log(data))
                             localStorage.setItem('ToastShow', JSON.stringify('false'))
-                            axios.post('http://localhost:5000/jwt', {
+                            axios.post('https://joblancernewserver.vercel.app/jwt', {
                                 email: email,
                                 password: password
                             }, { withCredentials: true })
@@ -83,7 +83,7 @@ const LogIn = () => {
                 const loggedUser = {
                     userLastSignInTime: result.user.metadata.lastSignInTime,
                 }
-                fetch(`http://localhost:5000/user/${result.user.uid}`, {
+                fetch(`https://joblancernewserver.vercel.app/user/${result.user.uid}`, {
                     method: `PATCH`,
                     headers: {
                         'content-type': 'application/json'
@@ -93,6 +93,11 @@ const LogIn = () => {
                     .then(res => res.json())
                     .then(data => console.log(data))
                 localStorage.setItem('ToastShow', JSON.stringify('false'))
+                axios.post('https://joblancernewserver.vercel.app/jwt', {
+                    email: result?.user.email,
+                }, { withCredentials: true })
+                    .then(res => console.log(res.data))
+                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
             })
             .catch((error) => {
                 const errorMessage = error.message;

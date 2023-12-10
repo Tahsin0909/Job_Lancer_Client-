@@ -16,7 +16,7 @@ const UpdateJob = () => {
     const [loading, setLoading] = useState(true)
     const [JobByIdData, setJobByIdData] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/updateJob/${JobId}`)
+        fetch(`https://joblancernewserver.vercel.app/updateJob/${JobId}`)
             .then(res => res.json())
             .then(data => {
                 setJobByIdData(data)
@@ -38,7 +38,7 @@ const UpdateJob = () => {
         const userFirebaseUid = User.userFirebaseUid
         const postedDate = new Date()
         // const postedHour = postedDate.getDate()
-        // console.log(postedHour);http://localhost:5000
+        // console.log(postedHour);https://joblancernewserver.vercel.app
 
         const jobCategory = form.jobCategory.value
 
@@ -46,7 +46,7 @@ const UpdateJob = () => {
             email, jobTitle, description, minPrice, maxPrice, tag1, tag2, deadLine, jobCategory, postedDate, userFirebaseUid
         }
         // console.log(PostJobData);
-        fetch(`http://localhost:5000/updateJob/${JobId}`, {
+        fetch(`https://joblancernewserver.vercel.app/updateJob/${JobId}`, {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'

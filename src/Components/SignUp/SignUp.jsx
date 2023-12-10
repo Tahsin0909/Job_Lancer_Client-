@@ -2,10 +2,15 @@ import { useContext, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { AuthContext } from "../ContextApi/ContextApi";
 import { Helmet } from "react-helmet";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const SignUp = () => {
     const { PasswordSignUp, GoogleSignUp } = useContext(AuthContext)
+        // Navigate After LOgIn
+        const location = useLocation()
+        const navigate = useNavigate()
     //Error MAssage State for password
     const [passwordError, setPasswordError] = useState('')
     const handleSignUp = (e) => {
@@ -51,7 +56,7 @@ const SignUp = () => {
                                 userPhoto: picture_Url,
                             }
                             console.log(SignedUser);
-                            fetch('http://localhost:5000/user', {
+                            fetch('https://joblancernewserver.vercel.app/user', {
                                 method: `POST`,
                                 headers: {
                                     'content-type': 'application/json'
@@ -61,6 +66,12 @@ const SignUp = () => {
                                 .then(res => res.json())
                                 .then(data => console.log(data))
                             localStorage.setItem('ToastShow', JSON.stringify('false'))
+                            axios.post('https://joblancernewserver.vercel.app/jwt', {
+                                email: email,
+                                password: password
+                            }, { withCredentials: true })
+                                .then(res => console.log(res.data))
+                            location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
                         })
                         .catch((error) => {
                             const errorMessage = error.message;
@@ -96,7 +107,7 @@ const SignUp = () => {
                     userPhoto: result.user.photoURL,
                 }
                 console.log(SignedUser);
-                fetch('http://localhost:5000/user', {
+                fetch('https://joblancernewserver.vercel.app/user', {
                     method: `POST`,
                     headers: {
                         'content-type': 'application/json'
@@ -106,6 +117,11 @@ const SignUp = () => {
                     .then(res => res.json())
                     .then(data => console.log(data))
                 localStorage.setItem('ToastShow', JSON.stringify('false'))
+                axios.post('https://joblancernewserver.vercel.app/jwt', {
+                    email: result?.user.email,
+                }, { withCredentials: true })
+                    .then(res => console.log(res.data))
+                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
             })
             .catch((error) => {
                 const errorMessage = error.message;

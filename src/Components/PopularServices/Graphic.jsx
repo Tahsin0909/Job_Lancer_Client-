@@ -7,7 +7,7 @@ const Graphic = () => {
     const [loading, setLoading] = useState(true)
     const [jobData, setJobData] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/jobCategory/Web%20Development')
+        fetch('https://joblancernewserver.vercel.app/jobCategory/Web%20Development')
             .then(res => res.json())
             .then(data => {
                 setJobData(data)
@@ -51,7 +51,7 @@ const Graphic = () => {
             jobId: _id,
             status: "applied"
         }
-        fetch('http://localhost:5000/myBid', {
+        fetch('https://joblancernewserver.vercel.app/myBid', {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'
@@ -74,7 +74,7 @@ const Graphic = () => {
             deadLine: deadLine,
             jobId: data._id
         }
-        fetch('http://localhost:5000/jobCategory/Graphic%20Design', {
+        fetch('https://joblancernewserver.vercel.app/jobCategory/Graphic%20Design', {
             method: `PUT`,
             headers: {
                 'content-type': 'application/json'

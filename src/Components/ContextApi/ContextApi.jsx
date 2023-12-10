@@ -36,6 +36,7 @@ const ContextApi = ({ children }) => {
         const Unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setAuthUser(user)
+
             } else {
                 // console.log(user)
             }
@@ -52,17 +53,19 @@ const ContextApi = ({ children }) => {
             )
             .catch(error => console.log(error.message))
     }
+
     // USer Fetch From Database
 
     useEffect(() => {
         if (AuthUser.uid) {
-            fetch(`http://localhost:5000/user/${AuthUser.uid}`)
+            fetch(`https://joblancernewserver.vercel.app/user/${AuthUser.uid}`)
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data);
+                    console.log(data);
                     setUser(data)
                     setLoading(false)
                 })
+
         }
     }, [AuthUser.uid])
 
@@ -70,6 +73,8 @@ const ContextApi = ({ children }) => {
         AuthUser,
         loading,
         User,
+        setUser,
+        setLoading,
         PasswordSignUp,
         PasswordSignIn,
         GoogleSignUp,

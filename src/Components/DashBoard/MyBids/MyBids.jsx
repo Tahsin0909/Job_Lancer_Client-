@@ -7,7 +7,7 @@ const MyBids = () => {
     const [loading, setLoading] = useState(true)
     const [myBidsData, setMyBidsData] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/myBid/${User.userFirebaseUid}`)
+        fetch(`https://joblancernewserver.vercel.app/myBid/${User.userFirebaseUid}`)
             .then(res => res.json())
             .then(data => {
                 setMyBidsData(data)
@@ -15,12 +15,13 @@ const MyBids = () => {
             })
     }, [User.userFirebaseUid])
     // console.log(myBidsData);
-    const handleComplete = (id) => {
-        console.log(id);
+    const handleComplete = (data) => {
+        // console.log(id);
         const BidStatus = {
+            bidRequestEmail: data?.bidRequestEmail,
             status: "completed"
         }
-        fetch(`http://localhost:5000/bid/${id}`, {
+        fetch(`https://joblancernewserver.vercel.app/bid/${data?.jobId}`, {
             method: `PATCH`,
             headers: {
                 'content-type': 'application/json'
@@ -58,7 +59,7 @@ const MyBids = () => {
             if (data?.status === "in Progress") {
                 return (
                     <div className="flex flex-col items-center gap-1 ">
-                        <button onClick={() => handleComplete(data?.jobId)} className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-blue-900 hover:text-white border-blue-900 bg-white text-blue-900 ">Completed</button>
+                        <button onClick={() => handleComplete(data)} className="text-xs py-1 md: px-2 md:w-24 w-14 border-2 hover:bg-blue-900 hover:text-white border-blue-900 bg-white text-blue-900 ">Completed</button>
                     </div>
                 )
             }
@@ -72,7 +73,7 @@ const MyBids = () => {
         const All = SortBy == "All"
         console.log(SortBy);
         if (!All) {
-            fetch(`http://localhost:5000/sort/${User.userFirebaseUid}/${SortBy}`)
+            fetch(`https://joblancernewserver.vercel.app/sort/${User.userFirebaseUid}/${SortBy}`)
                 .then(res => res.json())
                 .then(data => {
                     setMyBidsData(data)
@@ -80,7 +81,7 @@ const MyBids = () => {
                 })
         }
         else {
-            fetch(`http://localhost:5000/myBid/${User.userFirebaseUid}`)
+            fetch(`https://joblancernewserver.vercel.app/myBid/${User.userFirebaseUid}`)
                 .then(res => res.json())
                 .then(data => {
                     setMyBidsData(data)
