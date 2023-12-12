@@ -16,12 +16,12 @@ const WebDevelopment = () => {
     }, [])
     const jobPOsted = (time) => {
         const currentDate = new Date();
-        console.log(currentDate);
+        // console.log(currentDate);
         const jobPostedDate = time;
         const postedDate = new Date(jobPostedDate);
-        console.log(postedDate);
+        // console.log(postedDate);
         const timeDifference = currentDate.getTime() - postedDate.getTime();
-        console.log(timeDifference);
+        // console.log(timeDifference);
         const seconds = Math.floor(timeDifference / 1000);
         const minutes = Math.floor(seconds / 60);
         const hours = Math.floor(minutes / 60);
@@ -59,10 +59,10 @@ const WebDevelopment = () => {
             body: JSON.stringify(BdiData)
         })
             .then(res => res.json())
-            .then(resData => console.log(resData))
+            // .then(resData => console.log(resData))
     }
     const handleWatchList = (data) => {
-        console.log(data);
+        // console.log(data);
         const { email, jobTitle, jobCategory, postedDate, deadLine, _id } = data
         const watchListData = {
             userFirebaseUid: User?.userFirebaseUid,
@@ -82,21 +82,21 @@ const WebDevelopment = () => {
             body: JSON.stringify(watchListData)
         })
             .then(res => res.json())
-            .then(resData => console.log(resData))
+            // .then(resData => console.log(resData))
     }
     const deadLinExceed = (data) => {
         // console.log(data);
         const dateString = data?.deadLine;
-        console.log(dateString);
+        // console.log(dateString);
         const parts = dateString.split('-');
 
         const day = parseInt(parts[2], 10);
         const currentDate = new Date()
         const currentDay = parseInt(currentDate.getDate())
-        console.log(currentDay);
-        console.log(day);
+        // console.log(currentDay);
+        // console.log(day);
         if (day < currentDay) {
-            console.log("job closed");
+            // console.log("job closed");
             return (
                 <button className="btn border-2 border-green-900 mt-3 bg-green-900 text-white rounded-md hover:text-green-600 hover:bg-white">Job Closed</button>
             )

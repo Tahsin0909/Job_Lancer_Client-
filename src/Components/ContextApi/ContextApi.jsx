@@ -69,7 +69,29 @@ const ContextApi = ({ children }) => {
         }
     }, [AuthUser.uid])
 
+    const [theme, setTheme] = useState('green');
+    useEffect(() => {
+        const handleScroll = () => {
+            const threshold = 2700; // Change color after scrolling 300 pixels
+            // console.log(window.scrollY);
+            if (window.scrollY > threshold && theme === 'green') {
+                setTheme('blue');
+            } else if (window.scrollY <= threshold && theme === 'blue') {
+                setTheme('green');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Cleanup listener on component unmount
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [theme]);
+
+console.log(theme);
     const Data = {
+        theme,
         AuthUser,
         loading,
         User,

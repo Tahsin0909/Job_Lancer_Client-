@@ -8,9 +8,9 @@ import toast, { Toaster } from "react-hot-toast";
 
 
 const Navbar = () => {
-    const { User, LogOut, AuthUser } = useContext(AuthContext)
-    console.log(AuthUser);
-    console.log(User);
+    const { theme, LogOut, AuthUser } = useContext(AuthContext)
+    // console.log(AuthUser);
+    // console.log(User);
     return (
         <div className="flex justify-between items-center lg:px-32 md:px-10 px-4 border-b py-3 fixed w-full bg-white z-50">
             <div className="flex items-center">
@@ -49,31 +49,30 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="flex items-center gap-4">
-                <Link to={'/postJob'} className="border px-2 py-[7px] text-white bg-green-700 rounded-lg">Post a Job</Link>
+                <Link to={'/postJob'} className={theme === "blue"? "border px-2 py-[7px] text-white bg-blue-700 rounded-lg" : "border px-2 py-[7px] text-white bg-green-700 rounded-lg" }>Post a Job</Link>
                 {
                     AuthUser?.email ?
                         <div className="md:flex items-center gap-4  hidden">
-                            <div className="hidden md:flex items-center hover:text-green-400">
+                            <div className={theme === "blue"? "hidden md:flex items-center hover:text-blue-400" : "hidden md:flex items-center hover:text-green-400"}>
                                 <IoLogInOutline size={'20px'} />
                                 <Link onClick={() => { LogOut(), toast.success('Log Out Successful') }}>Log Out</Link>
                             </div>
-                            <div className="hidden md:flex items-center hover:text-green-400">
+                            <div className={theme === "blue"? "hidden md:flex items-center hover:text-blue-400" : "hidden md:flex items-center hover:text-green-400"}>
                                 {
                                     AuthUser?.photoURL? 
                                     <Link to={'/dashBoard'}><img className="w-12 rounded-full" src={AuthUser?.photoURL} alt="" /></Link> 
                                     : 
                                     <Link to={'/dashBoard'}> <img className="w-12 rounded-full" src={"https://cdn-icons-png.flaticon.com/128/219/219956.png"} alt="" /></Link> 
                                 }
-                                {/* https://cdn-icons-png.flaticon.com/128/219/219956.png */}
                             </div>
                         </div>
                         :
                         <div className="md:flex items-center gap-4  hidden">
-                            <div className="hidden md:flex items-center hover:text-green-400">
+                            <div className={theme === "blue"? "hidden md:flex items-center hover:text-blue-400" : "hidden md:flex items-center hover:text-green-400"}>
                                 <IoCreateOutline size={'20px'} />
                                 <Link to={'/signUp'}>Sign Up</Link>
                             </div>
-                            <div className="hidden md:flex items-center hover:text-green-400">
+                            <div className={theme === "blue"? "hidden md:flex items-center hover:text-blue-400" : "hidden md:flex items-center hover:text-green-400"}>
                                 <IoLogInOutline size={'20px'} />
                                 <Link to={'/logIn'}>Log In</Link>
                             </div>

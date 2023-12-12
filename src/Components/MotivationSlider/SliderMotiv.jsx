@@ -7,7 +7,7 @@ const SliderMotiv = () => {
     const changeItem = (x) => {
         setSelect(x)
     }
-    console.log(select);
+    // console.log(select);
     return (
         <div className="py-10">
             <div className="carousel w-full text-center lg:px-32 md:px-10 px-4">
